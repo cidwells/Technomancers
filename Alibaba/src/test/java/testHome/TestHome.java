@@ -6,7 +6,7 @@ import home.AlibabaSearch;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-public class TestHome extends CommonAPI {
+public class TestHome extends AlibabaHome {
 
     @Test
     public void clickKitchen() {
@@ -43,5 +43,5 @@ public class TestHome extends CommonAPI {
         AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
         alibabaHome.clickOnApparelWebElement();
     }
-    
+
 }

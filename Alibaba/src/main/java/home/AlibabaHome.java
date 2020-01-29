@@ -1,10 +1,11 @@
 package home;
 
+import base.CommonAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class AlibabaHome {
+public class AlibabaHome extends CommonAPI {
 
     @FindBy(how = How.CSS, using = "a[title='Home & Kitchen']")
     private static WebElement kitchenWebElement;
@@ -60,23 +61,23 @@ public class AlibabaHome {
     }
 
     public void clickOnToolsHardwareWebElement(){
-        getToolsHardwareWebElement();
+        getToolsHardwareWebElement().click();
     }
 
     public void clickOnRubberPlasticsWebElement(){
-        getRubberPlasticsWebElement();
+        getRubberPlasticsWebElement().click();
     }
 
     public void clickOnElectricalEquipmentSuppliesWebElement(){
-        getElectricalEquipmentSuppliesWebElement();
+        getElectricalEquipmentSuppliesWebElement().click();
     }
 
     public void clickOnVehicleAccessoriesWebElement(){
-        getVehicleAccessoriesWebElement();
+        getVehicleAccessoriesWebElement().click();
     }
 
     public void clickOnConsumerElectronicsWebElement(){
-        getConsumerElectronicsWebElement();
+        getConsumerElectronicsWebElement().click();
     }
 
     public void clickOnApparelWebElement(){
