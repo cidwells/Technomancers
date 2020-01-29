@@ -1,6 +1,7 @@
 package testSearch;
 
 import base.CommonAPI;
+import home.AlibabaSearch;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
@@ -9,7 +10,7 @@ public class TestSearch extends CommonAPI {
 
 
 
-    @Test
+   // @Test
     public void clickLink() throws InterruptedException {
         driver.findElement(By.cssSelector("a[title='Home & Kitchen']")).click();
         driver.findElement(By.cssSelector("a[title='Tools & Hardware']")).click();
@@ -20,6 +21,8 @@ public class TestSearch extends CommonAPI {
         driver.findElement(By.cssSelector("a[title='Apparel']")).click();
         Thread.sleep(5000);
     }
+
+
 
 
 }
