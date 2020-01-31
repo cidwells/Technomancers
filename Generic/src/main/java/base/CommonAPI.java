@@ -177,25 +177,50 @@ public class CommonAPI {
 
     //helper methods
     public void clickOnElement(String locator){
-        try {
-            driver.findElement(By.cssSelector(locator)).click();
-        }catch (Exception ex){
+        try{
+            driver.findElement(By.name(locator)).click();
+        }catch (Exception ex) {
             try {
-                driver.findElement(By.className(locator)).click();
-            }catch (Exception ex2) {
+                driver.findElement(By.id(locator)).click();
+            } catch (Exception ex2) {
                 try {
-                    driver.findElement(By.id(locator)).click();
+                    driver.findElement(By.cssSelector(locator)).click();
                 } catch (Exception ex3) {
-                    driver.findElement(By.xpath(locator)).click();
+                    try {
+                        driver.findElement(By.xpath(locator)).click();
+                    } catch (Exception ex4) {
+                        try {
+                            driver.findElement(By.linkText(locator)).click();
+                        } catch (Exception ex5) {
+                            driver.findElement(By.className(locator)).click();
+                        }
+                    }
                 }
             }
         }
     }
+
     public void typeOnElement(String locator, String value){
-        try {
-            driver.findElement(By.cssSelector(locator)).sendKeys(value);
-        }catch (Exception ex){
-            driver.findElement(By.id(locator)).sendKeys(value);
+        try{
+            driver.findElement(By.name(locator)).sendKeys(value);
+        }catch (Exception ex) {
+            try {
+                driver.findElement(By.id(locator)).sendKeys(value);
+            } catch (Exception ex2) {
+                try {
+                    driver.findElement(By.cssSelector(locator)).sendKeys(value);
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.xpath(locator)).sendKeys(value);
+                    } catch (Exception ex4) {
+                        try {
+                            driver.findElement(By.linkText(locator)).sendKeys(value);
+                        } catch (Exception ex5) {
+                            driver.findElement(By.className(locator)).sendKeys(value);
+                        }
+                    }
+                }
+            }
         }
     }
     public static void typeOnElementNEnter(String locator, String value) {
@@ -236,7 +261,27 @@ public class CommonAPI {
         }
     }
     public void clearField(String locator) {
-        driver.findElement(By.id(locator)).clear();
+        try{
+            driver.findElement(By.name(locator)).clear();
+        }catch (Exception ex) {
+            try {
+                driver.findElement(By.id(locator)).clear();
+            } catch (Exception ex2) {
+                try {
+                    driver.findElement(By.cssSelector(locator)).clear();
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.xpath(locator)).clear();
+                    } catch (Exception ex4) {
+                        try {
+                            driver.findElement(By.linkText(locator)).clear();
+                            } catch (Exception ex5) {
+                            driver.findElement(By.className(locator)).clear();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void navigateBack() {
