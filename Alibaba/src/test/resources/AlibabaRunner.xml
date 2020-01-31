@@ -13,7 +13,7 @@
 
     <test name = "Alibaba Home">
         <classes>
-          <!--  <class name="dropDownMenu.TestDropDownMenuItems"/> -->
+<!--            <class name="testHome.TestHome"/>-->
             <class name="testSearch.TestSearch"/>
         </classes>
     </test>
