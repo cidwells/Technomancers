@@ -5,16 +5,17 @@
 
     <parameter name="useCloudEnv" value="false"/>
     <parameter name="cloudEnvName" value="browserstack"/>
-    <parameter name="os" value="Windows"/>
+    <parameter name="os" value="OS X"/>
     <parameter name="os_version" value="Sierra"/>
     <parameter name="browserName" value="chrome"/>
-    <parameter name="browserVersion" value="75.0"/>
+    <parameter name="browserVersion" value="79.0"/>
     <parameter name="url" value="https://www.costco.com"/>
 
-    <test name = "Amazon Home">
+    <test name = "Costco Home">
         <classes>
             <!--  <class name="dropDownMenu.TestDropDownMenuItems"/> -->
             <class name="testSearch.TestSearch"/>
+<!--            <class name="home.CostcoHome"/>-->
         </classes>
     </test>
 
