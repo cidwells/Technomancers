@@ -9,18 +9,21 @@ import org.testng.annotations.Test;
 
 public class TestSearch extends AlibabaSearch {
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void searchBar() throws InterruptedException {
         AlibabaSearch alibabaSearch = PageFactory.initElements(driver, AlibabaSearch.class);
         alibabaSearch.runSearchText();
     }
-    @Test
+    @Test (enabled = true)
     public void searchBarUsingArray() throws InterruptedException {
         AlibabaSearch alibabaSearch = PageFactory.initElements(driver, AlibabaSearch.class);
         alibabaSearch.arraySearchBarTest();
     }
-
-
+    @Test (enabled = true)
+    public void searchEarbudWithFilter() throws InterruptedException {
+        AlibabaSearch alibabaSearch = PageFactory.initElements(driver, AlibabaSearch.class);
+        alibabaSearch.runSpecificSearch();
+    }
 
 
 }
