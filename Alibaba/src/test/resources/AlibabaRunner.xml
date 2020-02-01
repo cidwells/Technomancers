@@ -14,7 +14,7 @@
     <test name = "Alibaba Home">
         <classes>
             <class name="testHome.TestHome"/>
-            <class name="testSearch.TestSearch"/>
+<!--            <class name="testSearch.TestSearch"/>-->
         </classes>
     </test>
 
