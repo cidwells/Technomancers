@@ -461,14 +461,12 @@ public class CommonAPI {
 
         }
     }
-    // delete this
 
     public void hoverOnWebElement(WebElement webElement){
-        Actions builder = new Actions(driver);
-        builder.moveToElement(webElement).build().perform();
+        Actions hover = new Actions(driver);
+        hover.moveToElement(webElement).build().perform();
     }
 
-//
     public void mouseHoverByXpath(String locator) {
         try {
             WebElement element = driver.findElement(By.xpath(locator));
@@ -531,6 +529,21 @@ public class CommonAPI {
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
     }
 
+    public void waitUntilClickAble(WebElement webElement) {
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void waitUntilVisible(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public void waitUntilSelectable(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean element = wait.until(ExpectedConditions.elementToBeSelected(webElement));
+    }
+    
     public void upLoadFile(String locator, String path) {
         driver.findElement(By.cssSelector(locator)).sendKeys(path);
         /* path example to upload a file/image
