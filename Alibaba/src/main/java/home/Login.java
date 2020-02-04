@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Login extends CommonAPI {
@@ -35,7 +37,10 @@ public class Login extends CommonAPI {
     private static WebElement ordersWebElement;
     @FindBy(how = How.XPATH,using = "/html/body/div[1]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div[1]/a/div/span")
     private static WebElement allOrdersWebElement;
-
+    @FindBy(how = How.XPATH, using ="/html/body/div[1]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div[2]/a/div/span")
+    private static WebElement reviewsWebElement;
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div[3]/a/div/span")
+    private static WebElement refundsWebElement;
     public static WebElement getLoginWebElement() {
         return loginWebElement;
     }
@@ -84,6 +89,14 @@ public class Login extends CommonAPI {
         return allOrdersWebElement;
     }
 
+    public static WebElement getReviewsWebElement() {
+        return reviewsWebElement;
+    }
+
+    public static WebElement getRefundsWebElement() {
+        return refundsWebElement;
+    }
+
     public static void loginAlibaba(){
         getLoginWebElement().click();
         getUsernameInputWebElement().sendKeys("browserstackcid@gmail.com");
@@ -109,11 +122,25 @@ public class Login extends CommonAPI {
     public void clickBuyingLeadsWebElement(){
         getBuyingLeadsWebElement().click();
     }
-    public void hoverOnOrders(){
+    public void clickOnAllOrders(){
+        waitUntilVisible(ordersWebElement);
         hoverOnWebElement(ordersWebElement);
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        waitUntilClickAble(allOrdersWebElement);
         hoverOnWebElement(allOrdersWebElement);
-        WebDriverWait wait1 = new WebDriverWait(driver,10);
         getAllOrdersWebElement().click();
+    }
+    public void clickOnOrderReviews(){
+        waitUntilVisible(ordersWebElement);
+        hoverOnWebElement(ordersWebElement);
+        waitUntilClickAble(reviewsWebElement);
+        hoverOnWebElement(reviewsWebElement);
+        getReviewsWebElement().click();
+    }
+    public void clickOnRefundsWebElement(){
+        waitUntilVisible(ordersWebElement);
+        hoverOnWebElement(ordersWebElement);
+       waitUntilClickAble(reviewsWebElement);
+        hoverOnWebElement(refundsWebElement);
+        getRefundsWebElement().click();
     }
 }

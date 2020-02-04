@@ -33,10 +33,26 @@ public class UserAccount extends Login {
     }
 
     @Test
-    public void goToOrders()throws Exception{
+    public void goToAllOrders()throws Exception{
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
         clickMyAccountWebElement();
-        hoverOnOrders();
+        clickOnAllOrders();
+    }
+
+    @Test
+    public void goToOrderReviews(){
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
+        clickMyAccountWebElement();
+        clickOnOrderReviews();
+    }
+
+    @Test
+    public void goToRefunds(){
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
+        clickMyAccountWebElement();
+        clickOnRefundsWebElement();
     }
 }
