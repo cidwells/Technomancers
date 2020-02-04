@@ -99,9 +99,4 @@ public class Home extends CommonAPI {
     public void clickOnApparelWebElement(){
         getApparelWebElement();
     }
-
-    public void hoverOnCategories(){
-       mouseHoverByWebElement(hoverOnCategories);
-       getElectronicsWebElement().click();
-    }
 }

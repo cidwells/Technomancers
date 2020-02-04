@@ -223,6 +223,7 @@ public class CommonAPI {
             }
         }
     }
+
     public static void typeOnElementNEnter(String locator, String value) {
         try {
             driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
@@ -260,6 +261,7 @@ public class CommonAPI {
             }
         }
     }
+
     public void clearField(String locator) {
         try{
             driver.findElement(By.name(locator)).clear();
@@ -460,20 +462,13 @@ public class CommonAPI {
         }
     }
     // delete this
-    public void mouseHoverByWebElement(WebElement locator) {
-        try {
 
-            Actions action = new Actions(driver);
-            Actions hover = action.moveToElement(locator);
-        } catch (Exception ex) {
-            System.out.println("First attempt has been done, This is second try");
-
-            Actions action = new Actions(driver);
-            action.moveToElement(locator).perform();
-
-        }
+    public void hoverOnWebElement(WebElement webElement){
+        Actions builder = new Actions(driver);
+        builder.moveToElement(webElement).build().perform();
     }
 
+//
     public void mouseHoverByXpath(String locator) {
         try {
             WebElement element = driver.findElement(By.xpath(locator));
