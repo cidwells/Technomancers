@@ -110,7 +110,7 @@ public class CommonAPI {
         }else{
             getLocalDriver(os, browserName);
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
         driver.get(url);
         //driver.manage().window().maximize();
@@ -170,9 +170,9 @@ public class CommonAPI {
         return driver;
     }
 
-    @AfterMethod
+    //@AfterMethod
     public void cleanUp(){
-//    driver.close();
+    driver.close();
     }
 
     //helper methods
@@ -458,7 +458,20 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
+    }
+    // delete this
+    public void mouseHoverByWebElement(WebElement locator) {
+        try {
 
+            Actions action = new Actions(driver);
+            Actions hover = action.moveToElement(locator);
+        } catch (Exception ex) {
+            System.out.println("First attempt has been done, This is second try");
+
+            Actions action = new Actions(driver);
+            action.moveToElement(locator).perform();
+
+        }
     }
 
     public void mouseHoverByXpath(String locator) {

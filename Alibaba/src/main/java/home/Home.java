@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class AlibabaHome extends CommonAPI {
+import java.security.Policy;
+
+public class Home extends CommonAPI {
 
     @FindBy(how = How.CSS, using = "a[title='Home & Kitchen']")
     private static WebElement kitchenWebElement;
@@ -27,6 +29,12 @@ public class AlibabaHome extends CommonAPI {
 
     @FindBy(how = How.CSS, using = "a[title='Apparel']")
     private static WebElement apparelWebElement;
+
+    @FindBy(how = How.CSS, using = "div.sc-hd-category:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > span:nth-child(2)")
+    private static WebElement hoverOnCategories;
+
+    @FindBy(how = How.CSS, using = "/html/body/div[1]/header/div[4]/div/div[1]/div/div/div/ul/li[5]/div[1]/a[1]")
+    private static WebElement electronicsWebElement;
 
     public static WebElement getKitchenWebElement(){
         return kitchenWebElement;
@@ -54,6 +62,14 @@ public class AlibabaHome extends CommonAPI {
 
     public static WebElement getApparelWebElement() {
         return apparelWebElement;
+    }
+
+    public static WebElement getHoverOnCategories() {
+        return hoverOnCategories;
+    }
+
+    public static WebElement getElectronicsWebElement() {
+        return electronicsWebElement;
     }
 
     public void clickOnKitchenWebElement(){
@@ -84,4 +100,8 @@ public class AlibabaHome extends CommonAPI {
         getApparelWebElement();
     }
 
+    public void hoverOnCategories(){
+       mouseHoverByWebElement(hoverOnCategories);
+       getElectronicsWebElement().click();
+    }
 }

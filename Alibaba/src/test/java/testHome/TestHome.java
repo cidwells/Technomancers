@@ -1,53 +1,60 @@
 package testHome;
 
-import home.AlibabaHome;
-import home.AlibabaLogin;
+import home.Home;
+import home.Login;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-public class TestHome extends AlibabaHome {
+public class TestHome extends Home {
 
     @Test(enabled = true)
     public void clickKitchen() {
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnKitchenWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnKitchenWebElement();
     }
     @Test(enabled = true)
     public void clickTools(){
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnToolsHardwareWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnToolsHardwareWebElement();
     }
     @Test(enabled =true)
     public void clickRubber(){
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnRubberPlasticsWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnRubberPlasticsWebElement();
     }
     @Test(enabled = true)
     public void clickElectric(){
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnElectricalEquipmentSuppliesWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnElectricalEquipmentSuppliesWebElement();
     }
     @Test(enabled = true)
     public void clickVehicle(){
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnVehicleAccessoriesWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnVehicleAccessoriesWebElement();
     }
     @Test(enabled = true)
     public void clickConsumer(){
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnConsumerElectronicsWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnConsumerElectronicsWebElement();
     }
     @Test(enabled = true)
     public void clickApparel(){
-        AlibabaHome  alibabaHome = PageFactory.initElements(driver, AlibabaHome.class);
-        alibabaHome.clickOnApparelWebElement();
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickOnApparelWebElement();
     }
 
     @Test(enabled = true)
     public void loginOnHomePage(){
-        AlibabaLogin  alibabaLogin = PageFactory.initElements(driver, AlibabaLogin.class);
-        alibabaLogin.loginAlibaba();
-
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
     }
+
+    @Test(enabled = true)
+    public void hoverOnElement(){
+        Home home = PageFactory.initElements(driver, Home.class);
+        mouseHoverByCSS("div.sc-hd-category:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > span:nth-child(2)");
+        hoverOnCategories();
+    }
+
 
 }
