@@ -19,10 +19,12 @@ public class Login extends CommonAPI {
     private static WebElement myAlibabaWebElement;
     @FindBy(how = How.XPATH, using = "html/body/div[1]/div/div/div[1]/div/div[2]/a/div/i")
     private static WebElement messageCenterWebElement;  //span:contain('Message Center')
-    @FindBy(how = How.CSS, using = ".next-icon next-icon-filter next-icon-medium filter-trigger")
+    @FindBy(how = How.XPATH, using = "./html/body/div[2]/div/div[1]/div/div/div[1]/div/i")
     private static WebElement messageFilterWebElement;
-    @FindBy(how = How.LINK_TEXT, using = "Unread Messages")
+    @FindBy(how = How.XPATH, using = "/html/body/div[4]/div/div/div/ul/li")
     private static WebElement unreadMessagesWebElement;
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[4]/div[2]/button")
+    private static WebElement gotItWebElement;
 
     public static WebElement getLoginWebElement() {
         return loginWebElement;
@@ -56,6 +58,10 @@ public class Login extends CommonAPI {
         return unreadMessagesWebElement;
     }
 
+    public static WebElement getGotItWebElement() {
+        return gotItWebElement;
+    }
+
     public static void loginAlibaba(){
         getLoginWebElement().click();
         getUsernameInputWebElement().sendKeys("browserstackcid@gmail.com");
@@ -75,5 +81,7 @@ public class Login extends CommonAPI {
     public void clickUnreadMessagesWebElement(){
         getUnreadMessagesWebElement().click();
     }
-
+    public void clickGotItWebElement(){
+        getGotItWebElement().click();
+    }
 }

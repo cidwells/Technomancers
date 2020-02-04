@@ -19,7 +19,10 @@ public class UserAccount extends Login {
         login.loginAlibaba();
         clickMyAccountWebElement();
         clickMessageCenterWebElement();
-       Thread.sleep(8000);
+        clickGotItWebElement();
+        clickMessageFilterWebElement();
+        clickUnreadMessagesWebElement();
+        Thread.sleep(8000);
 
     }
 }
