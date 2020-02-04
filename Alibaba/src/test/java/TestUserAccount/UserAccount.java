@@ -7,14 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 public class UserAccount extends Login {
-    @Test(enabled = true)
+   @Test(enabled = true)
     public void login(){
-       Login justLogin= PageFactory.initElements(driver,Login.class);
-        loginAlibaba();
+       Login login= PageFactory.initElements(driver,Login.class);
+        login.loginAlibaba();
     }
 
-     @Test(enabled = true)
-    public void goToAccountPage() throws InterruptedException {
+   @Test(enabled = true)
+    public void goToAccountMessage() throws InterruptedException {
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
         clickMyAccountWebElement();
@@ -22,7 +22,21 @@ public class UserAccount extends Login {
         clickGotItWebElement();
         clickMessageFilterWebElement();
         clickUnreadMessagesWebElement();
-        Thread.sleep(8000);
+    }
 
+    @Test
+    public void goToBuyingLeads(){
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
+        clickMyAccountWebElement();
+        clickBuyingLeadsWebElement();
+    }
+
+    @Test
+    public void goToOrders()throws Exception{
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
+        clickMyAccountWebElement();
+        hoverOnOrders();
     }
 }
