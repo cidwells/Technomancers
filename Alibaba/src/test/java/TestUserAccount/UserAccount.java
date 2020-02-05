@@ -24,7 +24,7 @@ public class UserAccount extends Login {
         clickUnreadMessagesWebElement();
     }
 
-    @Test
+    @Test(enabled = true)
     public void goToBuyingLeads(){
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
@@ -32,7 +32,7 @@ public class UserAccount extends Login {
         clickBuyingLeadsWebElement();
     }
 
-    @Test
+    @Test(enabled = true)
     public void goToAllOrders()throws Exception{
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
@@ -40,7 +40,7 @@ public class UserAccount extends Login {
         clickOnAllOrders();
     }
 
-    @Test
+    @Test(enabled = true)
     public void goToOrderReviews(){
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
@@ -48,11 +48,28 @@ public class UserAccount extends Login {
         clickOnOrderReviews();
     }
 
-    @Test
+    @Test (enabled = true)
     public void goToRefunds(){
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
         clickMyAccountWebElement();
         clickOnRefundsWebElement();
+    }
+
+    @Test(enabled = true)
+    public void goToMyCoupon(){
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
+        clickMyAccountWebElement();
+        clickOnMyCoupon();
+    }
+
+    @Test(enabled = true)
+    public void goToHelpCenter(){
+        Login login = PageFactory.initElements(driver, Login.class);
+        login.loginAlibaba();
+        clickMyAccountWebElement();
+        //clickHelp();
+        clickOnBuyerHelp();
     }
 }
