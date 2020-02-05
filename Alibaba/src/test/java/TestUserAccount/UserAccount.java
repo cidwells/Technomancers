@@ -69,7 +69,6 @@ public class UserAccount extends Login {
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
         clickMyAccountWebElement();
-        //clickHelp();
         clickOnBuyerHelp();
     }
 }
