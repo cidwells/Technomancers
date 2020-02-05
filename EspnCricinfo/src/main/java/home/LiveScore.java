@@ -29,9 +29,6 @@ public class LiveScore extends CommonAPI {
     public void liveScore() {
     liveScore.click();
     }
-    public void houverOnLiveScore(){
-        mouseHoverByXpath("//span[@class='link-text'][contains(text(),'Live scores')]");
-    }
     public void userCanClickOnWeekView(){
        weekView.click();
     }
@@ -45,18 +42,16 @@ public class LiveScore extends CommonAPI {
         home.click();
         Thread.sleep(4000);
     }
-    public void validateTitle(){
+    public void validateTitle(String expected){
         //Actual title
-        String homeTitle=driver.getTitle();
-        String expected = "Live Cricket Scores";
+         driver.getTitle();
 
     }
-    public void selectTopFromMouseHover() throws InterruptedException {
+    public void selectMouseHover() throws InterruptedException {
         Actions actions = new Actions(driver);
         Thread.sleep(4000);
         actions.moveToElement(liveScore).perform();
         Thread.sleep(4000);
-
     }
 
 }

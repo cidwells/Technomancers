@@ -13,7 +13,7 @@ public class Teams extends CommonAPI {
     @FindBy(xpath = "/html/body/div[6]/section/section/div/section[2]/article[1]/div/div[2]/p[2]/a/b")
     private WebElement australiaTeam;
 
-    public void selectTopFromMouseHover() throws InterruptedException {
+    public void selectMouseHover() throws InterruptedException {
         Actions actions = new Actions(driver);
         Thread.sleep(4000);
         actions.moveToElement(teams).perform();

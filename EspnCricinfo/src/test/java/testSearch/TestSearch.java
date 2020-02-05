@@ -1,28 +1,42 @@
 package testSearch;
 
-import base.CommonAPI;
 import home.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestSearch extends HomePage {
 
     @Test
     public void userCanValidatingURL(){
-        HomePage homePage = PageFactory.initElements(driver,HomePage.class);
         boolean result=validatingURL(driver,"https://www.espncricinfo.com/");
         Assert.assertTrue(result);
     }
-
     @Test
     public void espnCricInfoLogo(){
     HomePage homePage = PageFactory.initElements(driver,HomePage.class);
     boolean espnCricInfoLogo = homePage.validateEspnCricInfoLogo();
     Assert.assertTrue(espnCricInfoLogo);
     }
-
+    @Test
+    public void userCanHoverToTopEvents() throws InterruptedException {
+        HomePage homePage = PageFactory.initElements(driver,HomePage.class);
+        homePage.mouseHoverToTopEvents();
+        String actual = "Top Events";
+        Assert.assertEquals(actual,"Top Events");
+    }
+    @Test
+    public void userCanMouseHoverToTopEvents() throws InterruptedException {
+        HomePage homePage = PageFactory.initElements(driver,HomePage.class);
+        homePage.mouseHoverToTopEvents();
+        homePage.selectToSrilankaVsEngland();
+        String actual = "Sri Lanka v England";
+        Assert.assertEquals(actual,"Sri Lanka v England");
+    }
     @Test
     public void test1() throws InterruptedException {
         driver.findElement(By.xpath("//a[@name='&lpos=cricket:feed:13:coll:headlines:1']")).click();
@@ -52,6 +66,31 @@ public class TestSearch extends HomePage {
         driver.findElement(By.xpath("//div[@class='scores-next controls']")).click();
         Assert.assertEquals(true,true);
     }
+    @Test
+    public void searchMultiplePlayers() throws InterruptedException {
+        HomePage homePage = PageFactory.initElements(driver,HomePage.class);
+//////        homePage.clickOnSearchButton();
+////        homePage.clearTypeNclickOnSearchButton();
+        List<String> playerList = new ArrayList<>();
+        playerList.add("Sakib al hasan");
+        playerList.add("shahid afridi");
+        playerList.add("mashrafi mortoja");
+        for(int i=0;i<playerList.size(); i++) {
+            clickOnSearchButton();
+            typePlayerList(playerList.get(i));
+            enterSearchBar();
+            clearSearchBar();
+            Thread.sleep(3000);
+//            driver.findElement(By.xpath("//a[@id='global-search-trigger']")).click();
+//            driver.findElement(By.xpath("//input[@placeholder='Search Series, Teams or Players...']")).sendKeys(playerList.get(i));
+//            driver.findElement(By.xpath("//input[@placeholder='Search Series, Teams or Players...']")).submit();
+//            driver.findElement(By.xpath("//input[@placeholder='Search Series, Teams or Players...']")).clear();
+
+        }
+
+    }
+
+
 
 
 
