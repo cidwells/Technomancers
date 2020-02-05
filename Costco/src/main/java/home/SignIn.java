@@ -20,11 +20,16 @@ public class SignIn extends CommonAPI {
     @FindBy(xpath = "//input[@class='primary']")
     WebElement signInBtn;
 
+    @FindBy(xpath = "//a[text()='Forgot Password?']")
+    WebElement  forgetPasswordLink;
+    @FindBy(xpath = "//input[@value='Send Password Reset Link']")
+    WebElement       sendPasswordResetLink;
+
     //    Methods
     public void signIn() {
         signInRegisterLink.click();
-        emailTextBox.sendKeys("malikaamiali82@gmail.com");
-        passwordTextBox.sendKeys("momy1974");
+        emailTextBox.sendKeys("malika");
+        passwordTextBox.sendKeys("");
         signInBtn.click();
         String actualTitle = "Add Membership Number";
         String expectedTitle = driver.getTitle();
@@ -57,6 +62,15 @@ public class SignIn extends CommonAPI {
         passwordTextBox.sendKeys("");
         signInBtn.click();
         String actualTitle = "Sign In";
+        String expectedTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle,expectedTitle);
+    }
+    public void restPaasWord(){
+        signInRegisterLink.click();
+        forgetPasswordLink.click();
+        emailTextBox.sendKeys("malika.com");
+        sendPasswordResetLink.click();
+        String actualTitle = "Password Reset Success";
         String expectedTitle = driver.getTitle();
         Assert.assertEquals(actualTitle,expectedTitle);
 

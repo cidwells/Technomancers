@@ -37,4 +37,10 @@ public class TestSignIn extends CommonAPI {
       singnin.signInWithInvalidPasswordInvalidEmail();
 
     }
+    @Test
+    public void testRetestPassword() throws InterruptedException {
+        accessSignIn();
+        singnin.restPaasWord();
+        Thread.sleep(10000);
+    }
 }
