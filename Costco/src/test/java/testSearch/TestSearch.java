@@ -13,6 +13,7 @@ public class TestSearch extends CommonAPI {
     CostcoHome costcoHome;
 
     public void accessCostcoHomePage() {
+
         this.costcoHome = PageFactory.initElements(driver, CostcoHome.class);
     }
 
