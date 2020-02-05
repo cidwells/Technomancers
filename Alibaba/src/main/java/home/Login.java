@@ -41,6 +41,13 @@ public class Login extends CommonAPI {
     private static WebElement reviewsWebElement;
     @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div[3]/a/div/span")
     private static WebElement refundsWebElement;
+    @FindBy (how = How.XPATH, using = "/html/body/div[1]/div/div/div[1]/div/div[4]/div/div[1]/div/div/div[4]/a/div/span")
+    private static WebElement myCouponWebElement;
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[1]/div[3]/a")
+    private static WebElement helpWebElement;
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[1]/div[3]/div/div[2]/div[2]/ul/li[1]/a")
+    private static WebElement buyerHelpCenter;
+
     public static WebElement getLoginWebElement() {
         return loginWebElement;
     }
@@ -97,6 +104,18 @@ public class Login extends CommonAPI {
         return refundsWebElement;
     }
 
+    public static WebElement getMyCouponWebElement() {
+        return myCouponWebElement;
+    }
+
+    public static WebElement getHelpWebElement() {
+        return helpWebElement;
+    }
+
+    public static WebElement getBuyerHelpCenter() {
+        return buyerHelpCenter;
+    }
+
     public static void loginAlibaba(){
         getLoginWebElement().click();
         getUsernameInputWebElement().sendKeys("browserstackcid@gmail.com");
@@ -122,6 +141,9 @@ public class Login extends CommonAPI {
     public void clickBuyingLeadsWebElement(){
         getBuyingLeadsWebElement().click();
     }
+    public void clickHelp(){
+        getHelpWebElement().click();
+    }
     public void clickOnAllOrders(){
         waitUntilVisible(ordersWebElement);
         hoverOnWebElement(ordersWebElement);
@@ -139,8 +161,22 @@ public class Login extends CommonAPI {
     public void clickOnRefundsWebElement(){
         waitUntilVisible(ordersWebElement);
         hoverOnWebElement(ordersWebElement);
-       waitUntilClickAble(reviewsWebElement);
+        waitUntilClickAble(reviewsWebElement);
         hoverOnWebElement(refundsWebElement);
         getRefundsWebElement().click();
+    }
+    public void clickOnMyCoupon(){
+        waitUntilVisible(ordersWebElement);
+        hoverOnWebElement(ordersWebElement);
+        waitUntilClickAble(myCouponWebElement);
+        hoverOnWebElement(myCouponWebElement);
+        getMyCouponWebElement().click();
+    }
+    public void clickOnBuyerHelp(){
+        waitUntilClickAble(helpWebElement);
+        hoverOnWebElement(helpWebElement);
+        clickHelp();
+        waitUntilClickAble(buyerHelpCenter);
+        getBuyerHelpCenter().click();
     }
 }

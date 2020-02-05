@@ -48,13 +48,4 @@ public class TestHome extends Home {
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();
     }
-
-   // @Test(enabled = true)
-    public void hoverOnElement(){
-        Home home = PageFactory.initElements(driver, Home.class);
-        mouseHoverByCSS("div.sc-hd-category:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > span:nth-child(2)");
-     //   hoverOnCategories();
-    }
-
-
 }

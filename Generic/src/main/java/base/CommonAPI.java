@@ -479,7 +479,6 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
-
     }
 
     //handling Alert
@@ -515,35 +514,35 @@ public class CommonAPI {
 
     //Synchronization
     public void waitUntilClickAble(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitUntilVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitUntilSelectable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
     }
 
     public void waitUntilClickAble(WebElement webElement) {
-    WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebDriverWait wait = new WebDriverWait(driver, 20);
     WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public void waitUntilVisible(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     public void waitUntilSelectable(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(webElement));
     }
-    
+
     public void upLoadFile(String locator, String path) {
         driver.findElement(By.cssSelector(locator)).sendKeys(path);
         /* path example to upload a file/image
