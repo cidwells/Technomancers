@@ -17,7 +17,7 @@ public class TestHome extends Home {
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnToolsHardwareWebElement();
     }
-    @Test(enabled =true)
+    @Test(enabled = true)
     public void clickRubber(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnRubberPlasticsWebElement();
@@ -41,6 +41,21 @@ public class TestHome extends Home {
     public void clickApparel(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnApparelWebElement();
+    }
+    @Test(enabled = true)
+    public void clickReadyToShip(){
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickReadyToShipWebElement();
+    }
+    @Test(enabled = true)
+    public void clickTradeShow(){
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.clickTradeShow();
+    }
+    @Test(enabled = true)
+    public void scrollToQuotes(){
+        Home home = PageFactory.initElements(driver, Home.class);
+        home.scrollToOneRequestMultipleQuotes();
     }
 
     @Test(enabled = true)

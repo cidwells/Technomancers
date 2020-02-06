@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import java.security.Policy;
+import java.util.List;
 
 public class Home extends CommonAPI {
 
@@ -15,7 +16,7 @@ public class Home extends CommonAPI {
     @FindBy(how = How.CSS, using = "a[title='Tools & Hardware']")
     private static WebElement toolsHardwareWebElement;
 
-    @FindBy(how = How.CSS, using = "a[title='Rubber & Plastics']")
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/ul/li[13]/a[3]")
     private static WebElement rubberPlasticsWebElement;
 
     @FindBy(how = How.CSS, using = "a[title='Electrical Equipment & Supplies']")
@@ -30,11 +31,23 @@ public class Home extends CommonAPI {
     @FindBy(how = How.CSS, using = "a[title='Apparel']")
     private static WebElement apparelWebElement;
 
-    @FindBy(how = How.CSS, using = "div.sc-hd-category:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > span:nth-child(2)")
-    private static WebElement hoverOnCategories;
-
     @FindBy(how = How.CSS, using = "/html/body/div[1]/header/div[4]/div/div[1]/div/div/div/ul/li[5]/div[1]/a[1]")
     private static WebElement electronicsWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[4]/div/div[3]/ul/li[1]/a")
+    private static WebElement readyToShipWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[4]/div/div[3]/ul/li[2]/a")
+    private static WebElement tradeShowWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[1]/label")
+    private static WebElement oneRequestMultipleQuotesWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/a")
+    private static WebElement allCategoriesWebElement;
+
+    @FindBy(how = How.XPATH, using ="/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[2]/input")
+    private static WebElement whatAreYouLookingForQuotesTextFieldWebElement;
 
     public static WebElement getKitchenWebElement(){
         return kitchenWebElement;
@@ -64,27 +77,54 @@ public class Home extends CommonAPI {
         return apparelWebElement;
     }
 
-    public static WebElement getHoverOnCategories() {
-        return hoverOnCategories;
-    }
-
     public static WebElement getElectronicsWebElement() {
         return electronicsWebElement;
     }
 
+    public static WebElement getReadyToShipWebElement() {
+        return readyToShipWebElement;
+    }
+
+    public static WebElement getTradeShowWebElement() {
+        return tradeShowWebElement;
+    }
+
+    public static WebElement getOneRequestMultipleQuotes() {
+        return oneRequestMultipleQuotesWebElement;
+    }
+
+    public static WebElement getAllCategoriesWebElement() {
+        return allCategoriesWebElement;
+    }
+
+    public static WebElement getOneRequestMultipleQuotesWebElement() {
+        return oneRequestMultipleQuotesWebElement;
+    }
+
+    public static WebElement getWhatAreYouLookingForQuotesTextFieldWebElement() {
+        return whatAreYouLookingForQuotesTextFieldWebElement;
+    }
+
     public void clickOnKitchenWebElement(){
+        hoverOnWebElement(allCategoriesWebElement);
         getKitchenWebElement().click();
     }
 
     public void clickOnToolsHardwareWebElement(){
+        hoverOnWebElement(allCategoriesWebElement);
         getToolsHardwareWebElement().click();
     }
 
     public void clickOnRubberPlasticsWebElement(){
+        hoverOnWebElement(allCategoriesWebElement);
+        waitUntilClickAble(rubberPlasticsWebElement);
         getRubberPlasticsWebElement().click();
     }
 
     public void clickOnElectricalEquipmentSuppliesWebElement(){
+        waitUntilClickAble(allCategoriesWebElement);
+        hoverOnWebElement(allCategoriesWebElement);
+        waitUntilClickAble(electricalEquipmentSuppliesWebElement);
         getElectricalEquipmentSuppliesWebElement().click();
     }
 
@@ -97,6 +137,21 @@ public class Home extends CommonAPI {
     }
 
     public void clickOnApparelWebElement(){
-        getApparelWebElement();
+        getApparelWebElement().click();
     }
+
+    public void clickReadyToShipWebElement(){
+        getReadyToShipWebElement().click();
+    }
+
+    public void clickTradeShow(){
+        getTradeShowWebElement().click();
+    }
+
+    public void scrollToOneRequestMultipleQuotes(){
+        scrollByVisibleElement(oneRequestMultipleQuotesWebElement);
+        getWhatAreYouLookingForQuotesTextFieldWebElement().sendKeys("Pocket watches");
+
+    }
+
 }
