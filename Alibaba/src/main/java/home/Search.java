@@ -76,8 +76,6 @@ public class Search extends CommonAPI {
         List<String> itemsList = new ArrayList<String>();
         itemsList.add("bike");
         itemsList.add("chain");
-        itemsList.add("candy");
-        itemsList.add("nike shoes");
         return itemsList;
    }
 

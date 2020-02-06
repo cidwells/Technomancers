@@ -11,6 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -99,7 +100,10 @@ public class CommonAPI {
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false")String cloudEnvName,
                       @Optional("OS X") String os, @Optional("10") String os_version, @Optional("chrome-options") String browserName, @Optional("34")
-                              String browserVersion, @Optional("https://www.google.com/") String url)throws IOException {
+
+
+                          String browserVersion, @Optional("https://www.google.com/") String url)throws IOException {
+     
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
         if(useCloudEnv==true){
             if(cloudEnvName.equalsIgnoreCase("browserstack")) {
@@ -110,7 +114,10 @@ public class CommonAPI {
         }else{
             getLocalDriver(os, browserName);
         }
+
+
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+  
         //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
         driver.get(url);
         //driver.manage().window().maximize();
@@ -594,6 +601,12 @@ public class CommonAPI {
         } catch (Exception ex3) {
             System.out.println("CSS locator didn't work");
         }
+    }
+
+    // MouseHover Method
+    public void mouseHoverTo(WebElement webElement) throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(webElement).perform();
     }
 
 }
