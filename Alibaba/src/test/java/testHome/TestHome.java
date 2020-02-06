@@ -7,47 +7,47 @@ import org.testng.annotations.Test;
 
 public class TestHome extends Home {
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickKitchen() {
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnKitchenWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickTools(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnToolsHardwareWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickRubber(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnRubberPlasticsWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickElectric(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnElectricalEquipmentSuppliesWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickVehicle(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnVehicleAccessoriesWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickConsumer(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnConsumerElectronicsWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickApparel(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickOnApparelWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickReadyToShip(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickReadyToShipWebElement();
     }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void clickTradeShow(){
         Home home = PageFactory.initElements(driver, Home.class);
         home.clickTradeShow();
@@ -58,7 +58,7 @@ public class TestHome extends Home {
         home.scrollToOneRequestMultipleQuotes();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void loginOnHomePage(){
         Login login = PageFactory.initElements(driver, Login.class);
         login.loginAlibaba();

@@ -601,13 +601,8 @@ public class CommonAPI {
         } catch (Exception ex3) {
             System.out.println("CSS locator didn't work");
         }
+    }
 
-    }
-    // Scroll To Element
-    public void scrollByVisibleElement(WebElement webElement){
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
-    }
     // MouseHover Method
     public void mouseHoverTo(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
