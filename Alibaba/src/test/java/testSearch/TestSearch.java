@@ -1,25 +1,25 @@
 package testSearch;
 
-import base.CommonAPI;
-import org.openqa.selenium.By;
+import home.Search;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
-public class TestSearch extends CommonAPI {
+public class TestSearch extends Search {
 
-
-
-    @Test
-    public void clickLink() throws InterruptedException {
-        driver.findElement(By.cssSelector("a[title='Home & Kitchen']")).click();
-        driver.findElement(By.cssSelector("a[title='Tools & Hardware']")).click();
-        driver.findElement(By.cssSelector("a[title='Rubber & Plastics']")).click();
-        driver.findElement(By.cssSelector("a[title='Electrical Equipment & Supplies']")).click();
-        driver.findElement(By.cssSelector("a[title='Vehicles & Accessories']")).click();
-        driver.findElement(By.cssSelector("a[title='Consumer Electronics']")).click();
-        driver.findElement(By.cssSelector("a[title='Apparel']")).click();
-        Thread.sleep(5000);
+    @Test (enabled = true)
+    public void searchBar() throws InterruptedException {
+        Search search = PageFactory.initElements(driver, Search.class);
+        search.runSearchText();
     }
-
+    @Test (enabled = true)
+    public void searchBarUsingArray() throws InterruptedException {
+        Search search = PageFactory.initElements(driver, Search.class);
+        search.arraySearchBarTest();
+    }
+    @Test (enabled = true)
+    public void searchEarbudWithFilter() throws InterruptedException {
+        Search search = PageFactory.initElements(driver, Search.class);
+        search.runSpecificSearch();
+    }
 
 }
