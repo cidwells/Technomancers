@@ -78,10 +78,9 @@ public class Search extends CommonAPI {
         itemsList.add("chain");
         itemsList.add("candy");
         itemsList.add("nike shoes");
-
         return itemsList;
+   }
 
-    }
     public void runSpecificSearch() throws InterruptedException {
         getMainSearchBar().click();
         getEnterInSearchBarWebElement().sendKeys("earbuds");
