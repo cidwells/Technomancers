@@ -36,6 +36,15 @@ public class Home extends CommonAPI {
     @FindBy(how = How.CSS, using = "/html/body/div[1]/header/div[4]/div/div[1]/div/div/div/ul/li[5]/div[1]/a[1]")
     private static WebElement electronicsWebElement;
 
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[4]/div/div[3]/ul/li[1]/a")
+    private static WebElement readyToShipWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[4]/div/div[3]/ul/li[2]/a")
+    private static WebElement tradeShowWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[1]/label")
+    private static WebElement oneRequestMultipleQuotes;
+
     public static WebElement getKitchenWebElement(){
         return kitchenWebElement;
     }
@@ -72,6 +81,18 @@ public class Home extends CommonAPI {
         return electronicsWebElement;
     }
 
+    public static WebElement getReadyToShipWebElement() {
+        return readyToShipWebElement;
+    }
+
+    public static WebElement getTradeShowWebElement() {
+        return tradeShowWebElement;
+    }
+
+    public static WebElement getOneRequestMultipleQuotes() {
+        return oneRequestMultipleQuotes;
+    }
+
     public void clickOnKitchenWebElement(){
         getKitchenWebElement().click();
     }
@@ -97,6 +118,18 @@ public class Home extends CommonAPI {
     }
 
     public void clickOnApparelWebElement(){
-        getApparelWebElement();
+        getApparelWebElement().click();
+    }
+
+    public void clickReadyToShipWebElement(){
+        getReadyToShipWebElement().click();
+    }
+
+    public void clickTradeShow(){
+        getTradeShowWebElement().click();
+    }
+
+    public void scrollToOneRequestMultipleQuotes(){
+        scrollByVisibleElement(oneRequestMultipleQuotes);
     }
 }
