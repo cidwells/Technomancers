@@ -10,7 +10,7 @@ import org.openqa.selenium.support.How;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlibabaSearch extends CommonAPI {
+public class Search extends CommonAPI {
 
    @FindBy(how = How.CSS, using = ".ui-searchbar-main")
     private static WebElement mainSearchBarWebElement;
