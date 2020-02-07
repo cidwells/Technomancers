@@ -1,8 +1,6 @@
 package TestUserAccount;
 
-import home.Home;
-import home.Login;
-import home.Search;
+import login.Login;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
