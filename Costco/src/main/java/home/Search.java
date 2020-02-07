@@ -3,10 +3,15 @@ package home;
 import base.CommonAPI;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class CostcoHome extends CommonAPI {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class Search extends CommonAPI {
 
     //CostcoLogo
     @FindBy(css="div[class='table-cell logo hidden-xs hidden-sm hidden-md hidden-lg']")
@@ -60,13 +65,38 @@ public class CostcoHome extends CommonAPI {
     @FindBy(css="div[id='country-select-popover-container']")
     WebElement countryList;
 
-    //Method
+    @FindBy(css="[id='warehouse-locations-dropdown']")
+    WebElement    warHouseLink;
+
+    @FindBy(css = "[id='warehouse-search-field-desktop']")
+    WebElement  warhouseTextBox;
+
+    @FindBy(xpath = "//*[@id=\"warehouse_locator_search-desktop\"]/input[8]")
+    WebElement   findLocationBtn;
+
+    @FindBy(xpath = "//div[@role='tooltip']")
+    WebElement opticalAllOptions;
+
+    public void opticalMouseHover() {
+        mouseHover(opticalLink);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    }
+
+    public List getOpticalOptions() {
+        List<String>  actual=new ArrayList<>();
+        actual=  getAllElementOptions(opticalAllOptions, "a");
+        return actual;
+    }
+
+    public void mouseHover() throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(warHouseLink).perform();
+    }
+
     public void printCountryList(){
      usDropDown.click();
      getTextFromWebElements("li[id='country_dropdown']");
         System.out.println(getTextFromWebElements("li[id='country_dropdown']"));
-
-
 
     }
 
@@ -88,7 +118,8 @@ public class CostcoHome extends CommonAPI {
     }
     public void findLocation() {
         locationsLink.click();
-        findLocationTextBox.sendKeys("11223",Keys.ENTER);
+        findLocationTextBox.sendKeys("11223");
+        findLocationTextBox.sendKeys(Keys.ENTER);
 
     }
     public void wareHouseLocations(){
