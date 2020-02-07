@@ -1,4 +1,4 @@
-package home;
+package search;
 
 import base.CommonAPI;
 import org.openqa.selenium.By;
