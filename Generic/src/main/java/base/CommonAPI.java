@@ -300,7 +300,6 @@ public class CommonAPI {
     public void scrollByVisibleElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
-
     }
 
     public static void captureScreenshot(WebDriver driver, String screenshotName) {
@@ -607,6 +606,11 @@ public class CommonAPI {
     public void mouseHoverTo(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(webElement).perform();
+    }
+    //Drop down
+    public void dropDown(WebElement webElement, int value){
+        Select dropDownBtn = new Select(webElement);
+        dropDownBtn.selectByIndex(value);
     }
 
 }
