@@ -105,6 +105,7 @@ public class CommonAPI {
 
                           String browserVersion, @Optional("https://www.google.com/") String url)throws IOException {
 
+
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
         if(useCloudEnv==true){
             if(cloudEnvName.equalsIgnoreCase("browserstack")) {
@@ -117,11 +118,13 @@ public class CommonAPI {
         }
 
 
+
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
   
         //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+
         driver.get(url);
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
     }
     public WebDriver getLocalDriver(@Optional("mac") String OS, String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
@@ -602,6 +605,7 @@ public class CommonAPI {
             System.out.println("CSS locator didn't work");
         }
     }
+
        // Scroll To Element
     public void scrollByElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -609,11 +613,28 @@ public class CommonAPI {
 
     }
 
+    public void mouseHover(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
+    }
+
+    public List getAllElementOptions(WebElement element, String tagname) {
+        List<String> links = new ArrayList<>();
+
+        List<WebElement> list = element.findElements(By.tagName(tagname));
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).getText());
+            links.add(list.get(i).getText());
+        }
+        return links;
+    }
+
     // MouseHover Method
     public void selectMouseHover(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(webElement).perform();
     }
+
     //Drop down
     public void dropDown(WebElement webElement, int value){
         Select dropDownBtn = new Select(webElement);

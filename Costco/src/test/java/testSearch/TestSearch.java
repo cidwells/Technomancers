@@ -1,20 +1,18 @@
 package testSearch;
 
 import base.CommonAPI;
-import home.CostcoHome;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
+import home.Search;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestSearch extends CommonAPI {
 
-    CostcoHome costcoHome;
+    Search costcoHome;
 
     public void accessCostcoHomePage() {
 
-        this.costcoHome = PageFactory.initElements(driver, CostcoHome.class);
+        this.costcoHome = PageFactory.initElements(driver, Search.class);
     }
 
     @Test
@@ -88,5 +86,17 @@ public class TestSearch extends CommonAPI {
         String actualURL="https://www.costco.com/grocery-household.html?dept=Grocery&keyword=cheese";
         String expecteURL=costcoHome.getCurrentPageUrl();
         Thread.sleep(20000);
+    }
+    public void testOpticalMousehover(){
+        accessCostcoHomePage();
+        costcoHome.opticalMouseHover();
+    }
+    @Test
+    public void testGetOpticalOption(){
+        accessCostcoHomePage();
+        costcoHome.opticalMouseHover();
+        costcoHome.getOpticalOptions();
+
+
     }
 }

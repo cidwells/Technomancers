@@ -28,65 +28,49 @@ public class SignUp extends CommonAPI {
     WebElement createAccountbtn;
 
 
-    //Methods
-    public void sinUp() {
+    public void signup(String email, String password, String rePasword) {
         signInRegisterLink.click();
         createAccountBtn.click();
-        registrationEmailTextBox.sendKeys("");
-        passwordTextBox.sendKeys("");
-        passwordVerifyTextBox.sendKeys("");
+        registrationEmailTextBox.sendKeys(email);
+        passwordTextBox.sendKeys(password);
+        passwordVerifyTextBox.sendKeys(rePasword);
         createAccountbtn.click();
-        String actualTittle="Register Account";
-        String expectedTittle=driver.getTitle();
-        Assert.assertEquals(actualTittle,expectedTittle);
     }
 
+    //Methods
     public void sinUpWithDifferentPassword() {
-        signInRegisterLink.click();
-        createAccountBtn.click();
-        registrationEmailTextBox.sendKeys("");
-        passwordTextBox.sendKeys("");
-        passwordVerifyTextBox.sendKeys("");
-        createAccountbtn.click();
-        String actualTittle="https://www.costco.com/RegisterView?URL=&isPharmacy=false";
-        String expectedTittle=driver.getCurrentUrl();
-        Assert.assertEquals(actualTittle,expectedTittle);
+        signup("f", "m", "m");
+        String actualTittle = "https://www.costco.com/RegisterView?URL=&isPharmacy=false";
+        String expectedTittle = driver.getCurrentUrl();
+        Assert.assertEquals(actualTittle, expectedTittle);
     }
 
     public void sinUpWithLettersPassowrd() {
-        signInRegisterLink.click();
-        createAccountBtn.click();
-        registrationEmailTextBox.sendKeys("################");
-        passwordTextBox.sendKeys("###############");
-        passwordVerifyTextBox.sendKeys("###########");
-        createAccountbtn.click();
+        signup("m","mamamama","mamamama");
         String actualULR = "https://www.costco.com/UserRegistrationAdd";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualULR, expectedURL);
     }
 
     public void sinUpWithDigitPassword() {
-        signInRegisterLink.click();
-        createAccountBtn.click();
-        registrationEmailTextBox.sendKeys("####################");
-        passwordTextBox.sendKeys("122435234");
-        passwordVerifyTextBox.sendKeys("122435234");
-        createAccountbtn.click();
+    signup("","1234556678","1234556678");
         String actualULR = "https://www.costco.com/RegisterView?URL=&isPharmacy=false";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualULR, expectedURL);
     }
 
     public void sinUpWithSpecialCharacters() {
-        signInRegisterLink.click();
-        createAccountBtn.click();
-        registrationEmailTextBox.sendKeys("##################");
-        passwordTextBox.sendKeys("122435<234");
-        passwordVerifyTextBox.sendKeys("122435<234");
-        createAccountbtn.click();
+        signup("m","12345566<","12345566<");
         String actualULR = "https://www.costco.com/RegisterView?URL=&isPharmacy=false";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualULR, expectedURL);
+    }
+
+    public void sinUp() {
+        signup("f", "m", "m");
+        String actualTittle = "Register Account";
+        String expectedTittle = driver.getTitle();
+        Assert.assertEquals(actualTittle, expectedTittle);
     }
 
 }
