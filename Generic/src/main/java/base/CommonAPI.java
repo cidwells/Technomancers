@@ -605,6 +605,7 @@ public class CommonAPI {
             System.out.println("CSS locator didn't work");
         }
     }
+
        // Scroll To Element
     public void scrollByElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -612,11 +613,11 @@ public class CommonAPI {
 
     }
 
-
     public void mouseHover(WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
     }
+
     public List getAllElementOptions(WebElement element, String tagname) {
         List<String> links = new ArrayList<>();
 
@@ -628,16 +629,15 @@ public class CommonAPI {
         return links;
     }
 
-
     // MouseHover Method
     public void selectMouseHover(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(webElement).perform();
     }
+
     //Drop down
     public void dropDown(WebElement webElement, int value){
         Select dropDownBtn = new Select(webElement);
         dropDownBtn.selectByIndex(value);
     }
-
 }
