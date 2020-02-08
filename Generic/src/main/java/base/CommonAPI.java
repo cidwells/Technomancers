@@ -100,7 +100,11 @@ public class CommonAPI {
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false")String cloudEnvName,
                       @Optional("OS X") String os, @Optional("10") String os_version, @Optional("chrome-options") String browserName, @Optional("34")
-                              String browserVersion, @Optional("https://www.amazon.com") String url)throws IOException {
+
+
+
+                          String browserVersion, @Optional("https://www.google.com/") String url)throws IOException {
+
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
         if(useCloudEnv==true){
             if(cloudEnvName.equalsIgnoreCase("browserstack")) {
@@ -111,7 +115,10 @@ public class CommonAPI {
         }else{
             getLocalDriver(os, browserName);
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+  
         //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
         driver.get(url);
         //driver.manage().window().maximize();
@@ -171,34 +178,60 @@ public class CommonAPI {
         return driver;
     }
 
-    @AfterMethod
+    //@AfterMethod
     public void cleanUp(){
-        //driver.close();
+    driver.close();
     }
 
     //helper methods
     public void clickOnElement(String locator){
-        try {
-            driver.findElement(By.cssSelector(locator)).click();
-        }catch (Exception ex){
+        try{
+            driver.findElement(By.name(locator)).click();
+        }catch (Exception ex) {
             try {
-                driver.findElement(By.className(locator)).click();
-            }catch (Exception ex2) {
+                driver.findElement(By.id(locator)).click();
+            } catch (Exception ex2) {
                 try {
-                    driver.findElement(By.id(locator)).click();
+                    driver.findElement(By.cssSelector(locator)).click();
                 } catch (Exception ex3) {
-                    driver.findElement(By.xpath(locator)).click();
+                    try {
+                        driver.findElement(By.xpath(locator)).click();
+                    } catch (Exception ex4) {
+                        try {
+                            driver.findElement(By.linkText(locator)).click();
+                        } catch (Exception ex5) {
+                            driver.findElement(By.className(locator)).click();
+                        }
+                    }
                 }
             }
         }
     }
+
     public void typeOnElement(String locator, String value){
-        try {
-            driver.findElement(By.cssSelector(locator)).sendKeys(value);
-        }catch (Exception ex){
-            driver.findElement(By.id(locator)).sendKeys(value);
+        try{
+            driver.findElement(By.name(locator)).sendKeys(value);
+        }catch (Exception ex) {
+            try {
+                driver.findElement(By.id(locator)).sendKeys(value);
+            } catch (Exception ex2) {
+                try {
+                    driver.findElement(By.cssSelector(locator)).sendKeys(value);
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.xpath(locator)).sendKeys(value);
+                    } catch (Exception ex4) {
+                        try {
+                            driver.findElement(By.linkText(locator)).sendKeys(value);
+                        } catch (Exception ex5) {
+                            driver.findElement(By.className(locator)).sendKeys(value);
+                        }
+                    }
+                }
+            }
         }
     }
+
     public static void typeOnElementNEnter(String locator, String value) {
         try {
             driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
@@ -236,12 +269,38 @@ public class CommonAPI {
             }
         }
     }
+
     public void clearField(String locator) {
-        driver.findElement(By.id(locator)).clear();
+        try{
+            driver.findElement(By.name(locator)).clear();
+        }catch (Exception ex) {
+            try {
+                driver.findElement(By.id(locator)).clear();
+            } catch (Exception ex2) {
+                try {
+                    driver.findElement(By.cssSelector(locator)).clear();
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.xpath(locator)).clear();
+                    } catch (Exception ex4) {
+                        try {
+                            driver.findElement(By.linkText(locator)).clear();
+                            } catch (Exception ex5) {
+                            driver.findElement(By.className(locator)).clear();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void navigateBack() {
         driver.navigate().back();
+    }
+    //scroll to element
+    public void scrollByVisibleElement(WebElement webElement){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
     public static void captureScreenshot(WebDriver driver, String screenshotName) {
@@ -414,7 +473,11 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
+    }
 
+    public void hoverOnWebElement(WebElement webElement){
+        Actions hover = new Actions(driver);
+        hover.moveToElement(webElement).build().perform();
     }
 
     public void mouseHoverByXpath(String locator) {
@@ -429,7 +492,6 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
-
     }
 
     //handling Alert
@@ -465,18 +527,33 @@ public class CommonAPI {
 
     //Synchronization
     public void waitUntilClickAble(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitUntilVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitUntilSelectable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
+    public void waitUntilClickAble(WebElement webElement) {
+    WebDriverWait wait = new WebDriverWait(driver, 20);
+    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void waitUntilVisible(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public void waitUntilSelectable(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        boolean element = wait.until(ExpectedConditions.elementToBeSelected(webElement));
     }
 
     public void upLoadFile(String locator, String path) {
@@ -524,17 +601,26 @@ public class CommonAPI {
         } catch (Exception ex3) {
             System.out.println("CSS locator didn't work");
         }
+       }
 
-    }
+
+   
     // Scroll To Element
     public void scrollByElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
+
     }
+
     // MouseHover Method
     public void selectMouseHover(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(webElement).perform();
+    }
+    //Drop down
+    public void dropDown(WebElement webElement, int value){
+        Select dropDownBtn = new Select(webElement);
+        dropDownBtn.selectByIndex(value);
     }
 
 }
