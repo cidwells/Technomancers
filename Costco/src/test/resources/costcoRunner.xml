@@ -13,10 +13,11 @@
 
     <test name = "Costco Home">
         <classes>
-<!--            <class name="testSearch.TestSearch"/>-->
-<!--            <class name="testSignUp.TestSignUp"/>-->
-<!--            <class name="testSignIn.TestSignIn"/>-->
-            <class name="testWarHouse.TestWarHouse"/>
+            <class name="testSearch.TestSearch"/>
+            <class name="testSignUp.TestSignUp"/>
+            <class name="testSignIn.TestSignIn"/>
+            <class name="testShopAllDepartements.TestShopAllDepartments"/>
+
 
         </classes>
     </test>
