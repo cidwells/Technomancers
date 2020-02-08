@@ -16,7 +16,9 @@
             <class name="testHome.TestHome"/>
             <class name="testSearch.TestSearch"/>
             <class name="testCategories.TestCategories"/>
-            <class name="TestUserAccount.UserAccount"></class>
+            <class name="testUserAccount.UserAccount"/>
+            <class name="testMySqlDatabase.TestMySqlDatabase"/>
+            <class name="testKeyword.TestKeyword"/>
         </classes>
     </test>
 

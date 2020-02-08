@@ -1,4 +1,4 @@
-package TestUserAccount;
+package testUserAccount;
 
 import login.Login;
 import org.openqa.selenium.support.PageFactory;
@@ -29,7 +29,6 @@ public class UserAccount extends Login {
         clickMyAccountWebElement();
         clickBuyingLeadsWebElement();
     }
-
     @Test(enabled = true)
     public void goToAllOrders()throws Exception{
         Login login = PageFactory.initElements(driver, Login.class);
@@ -37,7 +36,6 @@ public class UserAccount extends Login {
         clickMyAccountWebElement();
         clickOnAllOrders();
     }
-
     @Test(enabled = true)
     public void goToOrderReviews(){
         Login login = PageFactory.initElements(driver, Login.class);
@@ -45,7 +43,6 @@ public class UserAccount extends Login {
         clickMyAccountWebElement();
         clickOnOrderReviews();
     }
-
     @Test (enabled = true)
     public void goToRefunds(){
         Login login = PageFactory.initElements(driver, Login.class);
@@ -53,7 +50,6 @@ public class UserAccount extends Login {
         clickMyAccountWebElement();
         clickOnRefundsWebElement();
     }
-
     @Test(enabled = true)
     public void goToMyCoupon(){
         Login login = PageFactory.initElements(driver, Login.class);
@@ -61,7 +57,6 @@ public class UserAccount extends Login {
         clickMyAccountWebElement();
         clickOnMyCoupon();
     }
-
     @Test(enabled = true)
     public void goToHelpCenter(){
         Login login = PageFactory.initElements(driver, Login.class);

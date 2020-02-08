@@ -53,11 +53,11 @@ public class TestHome extends Home {
         home.clickTradeShow();
     }
     @Test(enabled = true)
-    public void scrollToQuotes(){
+    public void scrollToQuotes()throws Exception{
         Home home = PageFactory.initElements(driver, Home.class);
         home.scrollToOneRequestMultipleQuotes();
+        Thread.sleep(9000);
     }
-
     @Test(enabled = true)
     public void loginOnHomePage(){
         Login login = PageFactory.initElements(driver, Login.class);
