@@ -3,6 +3,7 @@ package home;
 
 import base.CommonAPI;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,6 +26,8 @@ public class HomePage extends CommonAPI{
     private static WebElement searchButton;
     @FindBy(xpath = "//input[@placeholder='Search Series, Teams or Players...']")
     private static WebElement searchBar;
+    @FindBy (xpath = "//input[@placeholder='Sports, Teams, Players, Articles, Videos and More'] ")
+    private static WebElement searchBar1;
 
     public boolean validateEspnCricInfoLogo() {
         return logo.isDisplayed();
@@ -50,7 +53,10 @@ public class HomePage extends CommonAPI{
         return searchBar;
     }
     public static void clearSearchBar(){
-        searchBar().clear();
+        searchBar1.clear();
+    }
+    public static WebElement getSearchBar1(){
+        return searchBar1;
     }
     public void clickOnSearchButton(){
         searchButton().click();
@@ -59,7 +65,10 @@ public class HomePage extends CommonAPI{
         searchBar().sendKeys(value);
     }
     public void enterSearchBar(){
-        searchBar.submit();
+        searchBar().sendKeys(Keys.ENTER);
+    }
+    public void enterSearchBar1(){
+        searchBar1.sendKeys(Keys.ENTER);
     }
     public List<String> playerList(){
         List<String> playerList = new ArrayList<>();
@@ -68,21 +77,18 @@ public class HomePage extends CommonAPI{
         playerList.add("mashrafi mortoza");
         return playerList;
     }
+
     public void clearTypeNclickOnSearchButton() throws InterruptedException {
         List<String> playerList = playerList();
-        playerList.add("Sakib al hasan");
-        playerList.add("shahid afridi");
-        playerList.add("mashrafi mortoja");
-        for(int i=0;i<playerList.size(); i++) {
+        for (int i = 0; i <playerList.size(); i++) {
+            typePlayerList(playerList.get(i));
+                enterSearchBar();
+                enterSearchBar1();
+                clearSearchBar();
+
 //            clickOnSearchButton();
-//            typePlayerList(list.get(i));
-//            enterSearchBar();
-//            clearSearchBar();
-//            Thread.sleep(3000);
-            driver.findElement(By.xpath("//a[@id='global-search-trigger']")).click();
-            driver.findElement(By.xpath("//input[@placeholder='Search Series, Teams or Players...']")).sendKeys(playerList.get(i));
-            driver.findElement(By.xpath("//input[@placeholder='Search Series, Teams or Players...']")).submit();
-            driver.findElement(By.xpath("//input[@placeholder='Search Series, Teams or Players...']")).clear();
+
+            Thread.sleep(3000);
 
         }
 

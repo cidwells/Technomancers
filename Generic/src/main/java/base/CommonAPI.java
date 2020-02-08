@@ -527,12 +527,12 @@ public class CommonAPI {
 
     }
     // Scroll To Element
-    public void scrollByVisibleElement(WebElement webElement){
+    public void scrollByElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
     }
     // MouseHover Method
-    public void mouseHoverTo(WebElement webElement) throws InterruptedException {
+    public void selectMouseHover(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(webElement).perform();
     }
