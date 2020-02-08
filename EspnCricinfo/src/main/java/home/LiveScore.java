@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LiveScore extends CommonAPI {
     @FindBy(xpath = "//span[@class='link-text'][contains(text(),'Live scores')]")
-    private WebElement liveScore;
+    public WebElement liveScore;
     @FindBy(xpath = ("/html/body/div[6]/div[2]/header/nav[1]/ul/li[1]/div/ul/li[1]/a/span/span[1]"))
     private WebElement home;
     @FindBy (xpath = "//*[@id=\"global-nav\"]/ul/li[1]/div/ul/li[2]/a/span/span[1]")
@@ -20,6 +20,7 @@ public class LiveScore extends CommonAPI {
     private WebElement monthView;
     @FindBy (xpath = "//*[@id=\"global-nav\"]/ul/li[1]/div/ul/li[4]/a/span/span[1]")
     private WebElement seasonView;
+
 
     public void newWindow(){
         PageFactory.initElements(driver,this);
@@ -47,12 +48,13 @@ public class LiveScore extends CommonAPI {
          driver.getTitle();
 
     }
-    public void selectMouseHover() throws InterruptedException {
-        Actions actions = new Actions(driver);
-        Thread.sleep(4000);
-        actions.moveToElement(liveScore).perform();
-        Thread.sleep(4000);
-    }
+//    public void selectMouseHover() throws InterruptedException {
+//        Actions actions = new Actions(driver);
+//        Thread.sleep(4000);
+//        actions.moveToElement(liveScore).perform();
+//        Thread.sleep(4000);
+//    }
+//
 
 }
 
