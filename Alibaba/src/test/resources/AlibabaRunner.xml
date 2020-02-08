@@ -13,11 +13,12 @@
 
     <test name = "Alibaba">
         <classes>
-<!--            <class name="testHome.TestHome"/>-->
-<!--            <class name="testSearch.TestSearch"/>-->
-<!--            <class name="testCategories.TestCategories"/>-->
-<!--            <class name="testUserAccount.UserAccount"/>-->
+            <class name="testHome.TestHome"/>
+            <class name="testSearch.TestSearch"/>
+            <class name="testCategories.TestCategories"/>
+            <class name="testUserAccount.UserAccount"/>
             <class name="testMySqlDatabase.TestMySqlDatabase"/>
+            <class name="testKeyword.TestKeyword"/>
         </classes>
     </test>
 

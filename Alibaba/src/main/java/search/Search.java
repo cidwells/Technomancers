@@ -59,7 +59,7 @@ public class Search extends CommonAPI {
         return addToCartButtonWebElement;
     }
 
-    public void runSearchText() throws InterruptedException {
+    public void runSearchText() {
         getMainSearchBar().click();
         getEnterInSearchBarWebElement().sendKeys("Computer");
         getSubmitButtonWebElement().click();

@@ -15,5 +15,4 @@ public class TestMySqlDatabase extends MySqlDatabase {
         MySqlDatabase mySqlDatabase = PageFactory.initElements(driver, MySqlDatabase.class);
         mySqlDatabase.dbSearchBarFromKnickKnackList();
     }
-
 }

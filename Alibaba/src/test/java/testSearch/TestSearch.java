@@ -7,17 +7,17 @@ import org.testng.annotations.Test;
 
 public class TestSearch extends Search {
 
-    @Test (enabled = false)
-    public void searchBar() throws InterruptedException {
+    @Test (enabled = true)
+    public void searchBar() {
         Search search = PageFactory.initElements(driver, Search.class);
         search.runSearchText();
     }
-    @Test (enabled = false)
-    public void searchBarUsingArray() throws InterruptedException {
+    @Test (enabled = true)
+    public void searchBarUsingArray() {
         Search search = PageFactory.initElements(driver, Search.class);
         search.arraySearchBarTest();
     }
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void searchEarbudWithFilter() throws InterruptedException {
         Search search = PageFactory.initElements(driver, Search.class);
         search.runSpecificSearch();
