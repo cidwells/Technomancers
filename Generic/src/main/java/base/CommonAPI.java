@@ -601,11 +601,8 @@ public class CommonAPI {
         } catch (Exception ex3) {
             System.out.println("CSS locator didn't work");
         }
-       }
-
-
-   
-    // Scroll To Element
+    }
+       // Scroll To Element
     public void scrollByElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
@@ -622,5 +619,4 @@ public class CommonAPI {
         Select dropDownBtn = new Select(webElement);
         dropDownBtn.selectByIndex(value);
     }
-
 }
