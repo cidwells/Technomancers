@@ -49,6 +49,11 @@ public class Home extends CommonAPI {
     @FindBy(how = How.XPATH, using ="/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[2]/input")
     private static WebElement whatAreYouLookingForQuotesTextFieldWebElement;
 
+    @FindBy(how = How.XPATH, using ="/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[3]/input")
+    private static WebElement whatAreYouLookingForQuotesQuantityTextFieldWebElement;
+
+    @FindBy(how = How.XPATH, using = "/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[3]/div")
+    private static WebElement quantityTypeWebElement;
     public static WebElement getKitchenWebElement(){
         return kitchenWebElement;
     }
@@ -105,6 +110,14 @@ public class Home extends CommonAPI {
         return whatAreYouLookingForQuotesTextFieldWebElement;
     }
 
+    public static WebElement getWhatAreYouLookingForQuotesQuantityTextFieldWebElement() {
+        return whatAreYouLookingForQuotesQuantityTextFieldWebElement;
+    }
+
+    public static WebElement getQuantityTypeWebElement() {
+        return quantityTypeWebElement;
+    }
+
     public void clickOnKitchenWebElement(){
         hoverOnWebElement(allCategoriesWebElement);
         getKitchenWebElement().click();
@@ -151,7 +164,8 @@ public class Home extends CommonAPI {
     public void scrollToOneRequestMultipleQuotes(){
         scrollByVisibleElement(oneRequestMultipleQuotesWebElement);
         getWhatAreYouLookingForQuotesTextFieldWebElement().sendKeys("Pocket watches");
-
+        getWhatAreYouLookingForQuotesQuantityTextFieldWebElement().sendKeys("15");
+        dropDown(quantityTypeWebElement,2);
     }
 
 }

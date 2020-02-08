@@ -1,18 +1,22 @@
 package search;
 
 import base.CommonAPI;
+import databases.ConnectToSqlDB;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Search extends CommonAPI {
+    public static ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
-   @FindBy(how = How.CSS, using = ".ui-searchbar-main")
+    @FindBy(how = How.CSS, using = ".ui-searchbar-main")
     private static WebElement mainSearchBarWebElement;
    @FindBy(how = How.CSS, using = ".ui-searchbar-keyword")
     private static WebElement enterInSearchBarWebElement;
@@ -91,4 +95,11 @@ public class Search extends CommonAPI {
         getFirstQuantityInputWebElement().sendKeys(Keys.ENTER);
        getAddToCartButtonWebElement().click();
     }
+
+    public static List<String> getItemsListFromDB()throws Exception, IOException, SQLException, ClassNotFoundException {
+        List<String> list = new ArrayList<>();
+        list = connectToSqlDB.readDataBase("search", "item");
+        return list;
+    }
+
 }
