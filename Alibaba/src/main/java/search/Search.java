@@ -1,18 +1,23 @@
-package home;
+package search;
 
 import base.CommonAPI;
+import databases.ConnectToMongoDB;
+import databases.ConnectToSqlDB;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlibabaSearch extends CommonAPI {
+public class Search extends CommonAPI {
+    public static ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
-   @FindBy(how = How.CSS, using = ".ui-searchbar-main")
+    @FindBy(how = How.CSS, using = ".ui-searchbar-main")
     private static WebElement mainSearchBarWebElement;
    @FindBy(how = How.CSS, using = ".ui-searchbar-keyword")
     private static WebElement enterInSearchBarWebElement;
@@ -54,7 +59,7 @@ public class AlibabaSearch extends CommonAPI {
         return addToCartButtonWebElement;
     }
 
-    public void runSearchText() throws InterruptedException {
+    public void runSearchText() {
         getMainSearchBar().click();
         getEnterInSearchBarWebElement().sendKeys("Computer");
         getSubmitButtonWebElement().click();
@@ -64,7 +69,6 @@ public class AlibabaSearch extends CommonAPI {
         System.out.println(driver.getTitle());
         List<String> list = getItems();
         for(int i=0; i<list.size(); i++){
-         //  clickOnElement("SearchText" );
             typeOnElement(".ui-searchbar-keyword",list.get(i));
             clickOnElement(".ui-searchbar-submit");
             clickOnElement(".ui-searchbar-keyword" );
@@ -76,12 +80,9 @@ public class AlibabaSearch extends CommonAPI {
         List<String> itemsList = new ArrayList<String>();
         itemsList.add("bike");
         itemsList.add("chain");
-        itemsList.add("candy");
-        itemsList.add("nike shoes");
-
         return itemsList;
+   }
 
-    }
     public void runSpecificSearch() throws InterruptedException {
         getMainSearchBar().click();
         getEnterInSearchBarWebElement().sendKeys("earbuds");
@@ -94,4 +95,42 @@ public class AlibabaSearch extends CommonAPI {
         getFirstQuantityInputWebElement().sendKeys(Keys.ENTER);
        getAddToCartButtonWebElement().click();
     }
+
+    public static List<String> getItemsListFromDB()throws Exception, IOException, SQLException, ClassNotFoundException {
+        List<String> list = new ArrayList<>();
+        list = connectToSqlDB.readDataBase("search", "item");
+        return list;
+   }
+    public void dbSearchBarTest () throws Exception {
+        System.out.println(driver.getTitle());
+        List<String> list = itemFromDb();
+        for (int i = 0; i < list.size(); i++) {
+            typeOnElement(".ui-searchbar-keyword", list.get(i));
+            clickOnElement(".ui-searchbar-submit");
+            clickOnElement(".ui-searchbar-keyword");
+            clearField(".ui-searchbar-keyword");
+        }
+    }
+    public static List<String> itemFromDb ()throws Exception, IOException, SQLException, ClassNotFoundException{
+        List<String> list = new ArrayList<>();
+        list = connectToSqlDB.readDataBase("search", "item");
+        return list;
+    }
+    public void knickKnack(){
+        ArrayList<String> knickKnackList = new ArrayList<String>();
+        knickKnackList.add("keychain");
+        knickKnackList.add("music box");
+        // List<String> blist = knickKnackList;
+        ConnectToSqlDB.insertStringDataFromArrayListToSqlTableUsingArray(knickKnackList,"knickKnack","item");
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> knickKnackList = new ArrayList<String>();
+        knickKnackList.add("keychain");
+        knickKnackList.add("music box");
+
+       // List<String> blist = knickKnackList;
+        ConnectToSqlDB.insertStringDataFromArrayListToSqlTableUsingArray(knickKnackList,"knickKnack","item");
+    }
+
 }

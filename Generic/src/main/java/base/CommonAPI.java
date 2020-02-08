@@ -11,6 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -99,7 +100,12 @@ public class CommonAPI {
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false")String cloudEnvName,
                       @Optional("OS X") String os, @Optional("10") String os_version, @Optional("chrome-options") String browserName, @Optional("34")
-                              String browserVersion, @Optional("https://www.googgle.com/") String url)throws IOException {
+
+
+
+                          String browserVersion, @Optional("https://www.google.com/") String url)throws IOException {
+
+
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
         if(useCloudEnv==true){
             if(cloudEnvName.equalsIgnoreCase("browserstack")) {
@@ -110,8 +116,13 @@ public class CommonAPI {
         }else{
             getLocalDriver(os, browserName);
         }
+
+
+
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+  
+        //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+
         driver.get(url);
         driver.manage().window().maximize();
     }
@@ -170,9 +181,9 @@ public class CommonAPI {
         return driver;
     }
 
-    @AfterMethod
+    //@AfterMethod
     public void cleanUp(){
-//    driver.close();
+    driver.close();
     }
 
     //helper methods
@@ -223,6 +234,7 @@ public class CommonAPI {
             }
         }
     }
+
     public static void typeOnElementNEnter(String locator, String value) {
         try {
             driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
@@ -260,6 +272,7 @@ public class CommonAPI {
             }
         }
     }
+
     public void clearField(String locator) {
         try{
             driver.findElement(By.name(locator)).clear();
@@ -286,6 +299,11 @@ public class CommonAPI {
 
     public void navigateBack() {
         driver.navigate().back();
+    }
+    //scroll to element
+    public void scrollByVisibleElement(WebElement webElement){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
     public static void captureScreenshot(WebDriver driver, String screenshotName) {
@@ -458,7 +476,11 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
+    }
 
+    public void hoverOnWebElement(WebElement webElement){
+        Actions hover = new Actions(driver);
+        hover.moveToElement(webElement).build().perform();
     }
 
     public void mouseHoverByXpath(String locator) {
@@ -473,7 +495,6 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
-
     }
 
     //handling Alert
@@ -509,18 +530,33 @@ public class CommonAPI {
 
     //Synchronization
     public void waitUntilClickAble(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitUntilVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitUntilSelectable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
+    public void waitUntilClickAble(WebElement webElement) {
+    WebDriverWait wait = new WebDriverWait(driver, 20);
+    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void waitUntilVisible(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public void waitUntilSelectable(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        boolean element = wait.until(ExpectedConditions.elementToBeSelected(webElement));
     }
 
     public void upLoadFile(String locator, String path) {
@@ -569,6 +605,13 @@ public class CommonAPI {
             System.out.println("CSS locator didn't work");
         }
     }
+       // Scroll To Element
+    public void scrollByElement(WebElement webElement){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
+
+    }
+
 
     public void mouseHover(WebElement element){
         Actions actions = new Actions(driver);
@@ -583,6 +626,18 @@ public class CommonAPI {
             links.add(list.get(i).getText());
         }
         return links;
+    }
+
+
+    // MouseHover Method
+    public void selectMouseHover(WebElement webElement) throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(webElement).perform();
+    }
+    //Drop down
+    public void dropDown(WebElement webElement, int value){
+        Select dropDownBtn = new Select(webElement);
+        dropDownBtn.selectByIndex(value);
     }
 
 }

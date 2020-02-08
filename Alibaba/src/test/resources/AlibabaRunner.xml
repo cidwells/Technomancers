@@ -11,10 +11,14 @@
     <parameter name="browserVersion" value="72.0"/>
     <parameter name="url" value="https://www.alibaba.com"/>
 
-    <test name = "Alibaba Home">
+    <test name = "Alibaba">
         <classes>
             <class name="testHome.TestHome"/>
-<!--            <class name="testSearch.TestSearch"/>-->
+            <class name="testSearch.TestSearch"/>
+            <class name="testCategories.TestCategories"/>
+            <class name="testUserAccount.UserAccount"/>
+            <class name="testMySqlDatabase.TestMySqlDatabase"/>
+            <class name="testKeyword.TestKeyword"/>
         </classes>
     </test>
 
