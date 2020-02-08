@@ -1,6 +1,7 @@
 package search;
 
 import base.CommonAPI;
+import databases.ConnectToMongoDB;
 import databases.ConnectToSqlDB;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -68,7 +69,6 @@ public class Search extends CommonAPI {
         System.out.println(driver.getTitle());
         List<String> list = getItems();
         for(int i=0; i<list.size(); i++){
-         //  clickOnElement("SearchText" );
             typeOnElement(".ui-searchbar-keyword",list.get(i));
             clickOnElement(".ui-searchbar-submit");
             clickOnElement(".ui-searchbar-keyword" );
@@ -100,6 +100,37 @@ public class Search extends CommonAPI {
         List<String> list = new ArrayList<>();
         list = connectToSqlDB.readDataBase("search", "item");
         return list;
+   }
+    public void dbSearchBarTest () throws Exception {
+        System.out.println(driver.getTitle());
+        List<String> list = itemFromDb();
+        for (int i = 0; i < list.size(); i++) {
+            typeOnElement(".ui-searchbar-keyword", list.get(i));
+            clickOnElement(".ui-searchbar-submit");
+            clickOnElement(".ui-searchbar-keyword");
+            clearField(".ui-searchbar-keyword");
+        }
+    }
+    public static List<String> itemFromDb ()throws Exception, IOException, SQLException, ClassNotFoundException{
+        List<String> list = new ArrayList<>();
+        list = connectToSqlDB.readDataBase("search", "item");
+        return list;
+    }
+    public void knickKnack(){
+        ArrayList<String> knickKnackList = new ArrayList<String>();
+        knickKnackList.add("keychain");
+        knickKnackList.add("music box");
+        // List<String> blist = knickKnackList;
+        ConnectToSqlDB.insertStringDataFromArrayListToSqlTableUsingArray(knickKnackList,"knickKnack","item");
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> knickKnackList = new ArrayList<String>();
+        knickKnackList.add("keychain");
+        knickKnackList.add("music box");
+
+       // List<String> blist = knickKnackList;
+        ConnectToSqlDB.insertStringDataFromArrayListToSqlTableUsingArray(knickKnackList,"knickKnack","item");
     }
 
 }

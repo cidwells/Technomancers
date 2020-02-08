@@ -1,4 +1,4 @@
-package TestUserAccount;
+package testUserAccount;
 
 import login.Login;
 import org.openqa.selenium.support.PageFactory;
