@@ -93,12 +93,14 @@ public class Home extends CommonAPI {
     }
     public void clickOnKitchenWebElement(){
         hoverOnWebElement(allCategoriesWebElement);
+        waitUntilClickAble(kitchenWebElement);
         getKitchenWebElement().click();
         String actualTitle =  handleNewTab(driver).getTitle();
         Assert.assertTrue(true,actualTitle);
     }
     public void clickOnToolsHardwareWebElement(){
         hoverOnWebElement(allCategoriesWebElement);
+        waitUntilClickAble(toolsHardwareWebElement);
         getToolsHardwareWebElement().click();
         String actualTitle = handleNewTab(driver).getTitle();
         Assert.assertTrue(true,actualTitle);
