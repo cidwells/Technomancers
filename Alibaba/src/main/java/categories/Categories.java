@@ -12,7 +12,7 @@ public class Categories extends CommonAPI {
     private static WebElement agricultureWebElement;
     @FindBy(how = How.CSS, using = ".cg-main > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > h4:nth-child(1) > a:nth-child(1)")
     private static WebElement foodNBeverageWebElement;
-    @FindBy(how = How.CSS, using = ".cg-main > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > h4:nth-child(1) > a:nth-child(1)")
+    @FindBy(how = How.XPATH, using = "//h4[@class='sub-title']//a[contains(text(),'Apparel')]")
     private static WebElement apparelInAllWebElement;
     @FindBy(how = How.CSS, using = ".cg-main > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > h4:nth-child(1) > a:nth-child(1)")
     private static WebElement textileNLeatherProductInCatWebElement;
@@ -72,6 +72,30 @@ public class Categories extends CommonAPI {
     private static WebElement officeNSuppliesInCatWebElement;
     @FindBy(how = How.CSS, using = "div.item:nth-child(12) > div:nth-child(2) > div:nth-child(3) > h4:nth-child(1) > a:nth-child(1)")
     private static WebElement serviceEquipmentInCatWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor2 anchor-apparel']")
+    private static WebElement titleApparelWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor1 anchor-agricuture']")
+    private static WebElement titleAgricultureWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor3 anchor-auto']")
+    private static WebElement titleVehicleWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor4 anchor-bags']")
+    private static WebElement titleBagsWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor5 anchor-electronics']")
+    private static WebElement titleElectronicsWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor6 anchor-electrical']")
+    private static WebElement titleElectricalEquipmentsWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor7 anchor-gifts']")
+    private static WebElement titleGiftsWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor8 anchor-health']")
+    private static WebElement titleHealthWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor9 anchor-home']")
+    private static WebElement titleHomeWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor10 anchor-machinery']")
+    private static WebElement titleMachineryWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor11 anchor-metallurgy']")
+    private static WebElement titleMetallurgyWebElement;
+    @FindBy(how = How.XPATH, using = "//h3[@class='big-title anchor12 anchor-packaging']")
+    private static WebElement titlePackageWebElement;
 
     public static WebElement getAllCategoriesWebElement() {
         return allCategoriesWebElement;
@@ -271,6 +295,167 @@ public class Categories extends CommonAPI {
         getOfficeNSuppliesInCatWebElement().click();
     }
     public void clickOnServiceEquipmentInCatWebElement(){
+        getServiceEquipmentInCatWebElement().click();
+    }
+    public void sClickOnAgricultureWebElement(){
+        waitUntilVisible(titleAgricultureWebElement);
+        scrollByElement(titleAgricultureWebElement);
+        getAgricultureWebElement().click();
+    }
+    public void sClickOnFoodNBeverage(){
+        waitUntilVisible(titleAgricultureWebElement);
+        scrollByElement(titleAgricultureWebElement);
+        getFoodNBeverageWebElement().click();
+    }
+    public void sClickOnApparelInAllWebElement(){
+        waitUntilVisible(titleApparelWebElement);
+        scrollByElement(titleApparelWebElement);
+        getApparelInAllWebElement().click();
+
+    }
+    public void sClickOnTextileNLeatherProductInCatWebElement(){
+        waitUntilVisible(titleApparelWebElement);
+        scrollByElement(titleApparelWebElement);
+        getTextileNLeatherProductInCatWebElement().click();
+    }
+    public void sClickOnFashionNAccessoriesInCatWebElement(){
+         waitUntilVisible(titleApparelWebElement);
+        scrollByElement(titleApparelWebElement);
+        getFashionNAccessoriesInCatWebElement().click();
+    }
+    public void sClickOnTimePieceJeweleryEyeWareInCatWebElement(){
+        waitUntilVisible(titleApparelWebElement);
+        scrollByElement(titleApparelWebElement);
+        getTimePieceJeweleryEyeWareInCatWebElement().click();
+    }
+    public void sClickOnVehicleAccessoriesInCatWebElement(){
+        waitUntilVisible(titleVehicleWebElement);
+        scrollByElement(titleVehicleWebElement);
+        getVehicleAccessoriesInCatWebElement().click();
+    }
+    public void sClickOnLuggageBagsNCasesInCatWebElement(){
+        waitUntilVisible(titleBagsWebElement);
+        scrollByElement(titleBagsWebElement);
+        getLuggageBagsNCasesInCatWebElement().click();
+    }
+    public void sClickOnShoesNAccessoriesInCatWebElement(){
+        waitUntilVisible(titleBagsWebElement);
+        scrollByElement(titleBagsWebElement);
+        getShoesNAccessoriesInCatWebElement().click();
+    }
+    public void sClickOnConsumerElectronicsInCatWebElement(){
+        waitUntilVisible(titleElectronicsWebElement);
+        scrollByElement(titleElectronicsWebElement);
+        getConsumerElectronicsInCatWebElement().click();
+    }
+    public void sClickOnHomeApplianceInCatWebElement(){
+        waitUntilVisible(titleElectronicsWebElement);
+        scrollByElement(titleElectronicsWebElement);
+        getHomeApplianceInCatWebElement().click();
+    }
+    public void sClickOnSecurityNProtectionInCatWebElement(){
+        waitUntilVisible(titleElectronicsWebElement);
+        scrollByElement(titleElectronicsWebElement);
+        getSecurityNProtectionInCatWebElement().click();
+    }
+    public void sClickOnElectricalEquipmentNSuppliesInCatWebElement(){
+        waitUntilVisible(titleElectricalEquipmentsWebElement);
+        scrollByElement(titleElectricalEquipmentsWebElement);
+        getElectricalEquipmentNSuppliesInCatWebElement().click();
+    }
+    public void  sClickOnSportsNEntertainmentInCatWebElement(){
+        waitUntilVisible(titleGiftsWebElement);
+        scrollByElement(titleGiftsWebElement);
+        getSportsNEntertainmentInCatWebElement().click();
+    }
+    public void sClickOnGiftsNCraftInCatWebElement(){
+        waitUntilVisible(titleGiftsWebElement);
+        scrollByElement(titleGiftsWebElement);
+        getGiftsNCraftInCatWebElement().click();
+    }
+    public void sClickOnToysNHobbiesInCatWebElement(){
+        waitUntilVisible(titleGiftsWebElement);
+        scrollByElement(titleGiftsWebElement);
+        getToysNHobbiesInCatWebElement().click();
+    }
+    public void sClickOnHealthNMedicalInCatWebElement(){
+        waitUntilVisible(titleHealthWebElement);
+        scrollByElement(titleHealthWebElement);
+        getHealthNMedicalInCatWebElement().click();
+    }
+    public void sClickOnBeautyNPersonalCareInCatWebElement(){
+        waitUntilVisible(titleHealthWebElement);
+        scrollByElement(titleHealthWebElement);
+        getBeautyNPersonalCareInCatWebElement().click();
+    }
+    public void sClickOnConstructionNRealEstateInCatWebElement(){
+        waitUntilVisible(titleHomeWebElement);
+        scrollByElement(titleHomeWebElement);
+        getConstructionNRealEstateInCatWebElement().click();
+    }
+    public void sClickOnHomeNGardenInCatWebElement(){
+        waitUntilVisible(titleHomeWebElement);
+        scrollByElement(titleHomeWebElement);
+        getHomeNGardenInCatWebElement().click();
+    }
+    public void sClickOnLightsNLightingInCatWebElement(){
+        waitUntilVisible(titleHomeWebElement);
+        scrollByElement(titleHomeWebElement);
+        getLightsNLightingInCatWebElement().click();
+    }
+    public void sClickOnFurnitureInCatWebElement(){
+        waitUntilVisible(titleHomeWebElement);
+        scrollByElement(titleHomeWebElement);
+        getFurnitureInCatWebElement().click();
+    }
+    public void sClickOnMachineryInCatWebElement(){
+        waitUntilVisible(titleMachineryWebElement);
+        scrollByElement(titleMachineryWebElement);
+        getMachineryInCatWebElement().click();
+    }
+    public void sClickOnFabricationServicesInCatWebElement(){
+        waitUntilVisible(titleMachineryWebElement);
+        scrollByElement(titleMachineryWebElement);
+        getFabricationServicesInCatWebElement().click();
+    }
+    public void sClickOnToolsNHardwareInCatWebElement(){
+        waitUntilVisible(titleMachineryWebElement);
+        scrollByElement(titleMachineryWebElement);
+        getToolsNHardwareInCatWebElement().click();
+    }
+    public void sClickOnMineralsNMetallurgyInCatWebElement(){
+        waitUntilVisible(titleMetallurgyWebElement);
+        scrollByElement(titleMetallurgyWebElement);
+        getMineralsNMetallurgyInCatWebElement().click();
+    }
+    public void sClickOnChemicalsInCatWebElement(){
+        waitUntilVisible(titleMetallurgyWebElement);
+        scrollByElement(titleMetallurgyWebElement);
+        getChemicalsInCatWebElement().click();
+    }
+    public void sClickOnRubberNPlasticInCatWebElement(){
+        waitUntilVisible(titleMetallurgyWebElement);
+        scrollByElement(titleMetallurgyWebElement);
+        getRubberNPlasticInCatWebElement().click();
+    }
+    public void sClickOnEnergyInCatWebElement(){
+        waitUntilVisible(titleMetallurgyWebElement);
+        scrollByElement(titleMetallurgyWebElement);
+        getEnergyInCatWebElement().click();
+    }
+    public void sClickOnPackagingNPrintingInCatWebElement(){
+        waitUntilVisible(titlePackageWebElement);
+        scrollByElement(titlePackageWebElement);
+        getPackagingNPrintingInCatWebElement().click();
+    }
+    public void sClickOnOfficeNSuppliesInCatWebElement(){
+        waitUntilVisible(titlePackageWebElement);
+        scrollByElement(titlePackageWebElement);
+        getOfficeNSuppliesInCatWebElement().click();
+    }
+    public void sClickOnServiceEquipmentInCatWebElement(){
+        waitUntilVisible(titlePackageWebElement);
+        scrollByElement(titlePackageWebElement);
         getServiceEquipmentInCatWebElement().click();
     }
 }

@@ -31,6 +31,14 @@ public class Search extends CommonAPI {
     private static WebElement firstQuantityInputWebElement;
    @FindBy(how = How.CSS, using = "button[class='action-button-std action-start-order']")
     private static WebElement addToCartButtonWebElement;
+   @FindBy(how = How.CSS, using = "a.seb-refine-categories__item:nth-child(1)")
+    private static WebElement ledStripFilterWebElement;
+   @FindBy(how = How.XPATH, using = "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div[5]/div[1]/a[1]")
+   private static WebElement contactSupplierWebElement;
+   @FindBy(how = How.XPATH, using = "//textarea[@id='inquiry-content']")
+   private static WebElement messageWebElement;
+    @FindBy(how = How.XPATH, using = "//input[@name='email']")
+    private static WebElement contactSupplierWithEmailWebElement;
    public static WebElement getMainSearchBar() {
         return mainSearchBarWebElement;
     }
@@ -59,11 +67,125 @@ public class Search extends CommonAPI {
         return addToCartButtonWebElement;
     }
 
-    public void runSearchText() {
+    public static WebElement getLedStripFilterWebElement() {
+        return ledStripFilterWebElement;
+    }
+
+    public static WebElement getContactSupplierWebElement() {
+        return contactSupplierWebElement;
+    }
+
+    public static WebElement getMessageWebElement() {
+        return messageWebElement;
+    }
+
+    public static WebElement getContactSupplierWithEmailWebElement() {
+        return contactSupplierWithEmailWebElement;
+    }
+
+    public void runSearchComputerText() {
         getMainSearchBar().click();
         getEnterInSearchBarWebElement().sendKeys("Computer");
         getSubmitButtonWebElement().click();
     }
+    public void runSearchCandyText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Candy");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchPaperText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Paper");
+        getSubmitButtonWebElement().click();
+    }
+
+    public void runSearchChairText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Chair");
+        getSubmitButtonWebElement().click();
+    }
+
+    public void runSearchTeddyBearText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Teddy Bear");
+        getSubmitButtonWebElement().click();
+    }
+
+    public void runSearchCrayonText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Crayon");
+        getSubmitButtonWebElement().click();
+    }
+
+    public void runSearchHdmiText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Hdmi");
+        getSubmitButtonWebElement().click();
+    }
+
+    public void runSearchJeanText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Jean");
+        getSubmitButtonWebElement().click();
+    }
+
+    public void runSearchBeanText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Bean");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchCanText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("can");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchClockText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Clock");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchSprayBottleText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Spray bottle");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchTissueText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Tissue");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchLightBulbText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("LightBulb");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchSpeakerText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Speaker");
+        getSubmitButtonWebElement().click();
+    }
+    public void runSearchKnifeText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Knife");
+        getSubmitButtonWebElement().click();
+    } public void runSearchKeyRingText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("keyring");
+        getSubmitButtonWebElement().click();
+    } public void runSearchSpoonText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Spoon");
+        getSubmitButtonWebElement().click();
+    } public void runSearchForkText() {
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("Fork");
+        getSubmitButtonWebElement().click();
+    }
+
+
+
+
+
 
     public void arraySearchBarTest () {
         System.out.println(driver.getTitle());
@@ -83,7 +205,7 @@ public class Search extends CommonAPI {
         return itemsList;
    }
 
-    public void runSpecificSearch() throws InterruptedException {
+    public void runSpecificBluetoothSearch(){
         getMainSearchBar().click();
         getEnterInSearchBarWebElement().sendKeys("earbuds");
         getSubmitButtonWebElement().click();
@@ -95,7 +217,18 @@ public class Search extends CommonAPI {
         getFirstQuantityInputWebElement().sendKeys(Keys.ENTER);
        getAddToCartButtonWebElement().click();
     }
-
+    public void runSpecificPowerStripSearch(){
+        getMainSearchBar().click();
+        getEnterInSearchBarWebElement().sendKeys("power strip");
+        getSubmitButtonWebElement().click();
+        waitUntilClickAble(ledStripFilterWebElement);
+        getLedStripFilterWebElement().click();
+        waitUntilClickAble(contactSupplierWebElement);
+        getContactSupplierWebElement().click();
+        handleNewTab(driver);
+        getMessageWebElement().sendKeys("How soon can you ship");
+        getContactSupplierWithEmailWebElement().sendKeys("browserstackcid@gmail.com");
+   }
     public static List<String> getItemsListFromDB()throws Exception, IOException, SQLException, ClassNotFoundException {
         List<String> list = new ArrayList<>();
         list = connectToSqlDB.readDataBase("search", "item");

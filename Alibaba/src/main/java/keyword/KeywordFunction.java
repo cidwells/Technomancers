@@ -25,7 +25,7 @@ public class KeywordFunction extends KeywordDataReader {
     }
 
     public void searchComputer() {
-        search.runSearchText();
+        search.runSearchComputerText();
     }
 
     public void clickAllCategories() {
@@ -41,9 +41,6 @@ public class KeywordFunction extends KeywordDataReader {
                 break;
             case "loginAgain":
                 loginAgain();
-                break;
-            case "checkMessage":
-                checkMessage();
                 break;
             default:
                 throw new InvalidArgumentException("Invalid features choice");
