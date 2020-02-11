@@ -64,7 +64,11 @@
                 <artifactId>commons-io</artifactId>
                 <version>2.5</version>
             </dependency>
-
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>4.1.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -84,7 +88,7 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <!--                        <suiteXmlFiles>target/test-classes/AmazonTestRunner.xml</suiteXmlFiles>-->
+                                                <suiteXmlFiles>target/test-classes/AlibabaTestRunner.xml</suiteXmlFiles>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
