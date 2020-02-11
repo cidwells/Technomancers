@@ -91,19 +91,19 @@ public class CommonAPI {
     }
     //Browser SetUp
     public static WebDriver driver = null;
-    public String browserstack_username= "";
-    public String browserstack_accesskey = "";
+    public String browserstack_username= "cid4";
+    public String browserstack_accesskey = "fV9iUgvQ4nYRhPZoJsVs";
     public String saucelabs_username = "";
     public String saucelabs_accesskey = "";
 
     @Parameters({"useCloudEnv","cloudEnvName","os","os_version","browserName","browserVersion","url"})
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false")String cloudEnvName,
-                      @Optional("OS X") String os, @Optional("10") String os_version, @Optional("chrome-options") String browserName, @Optional("34")
+                      @Optional("Windows") String os, @Optional("10") String os_version, @Optional("firefox") String browserName, @Optional("72")
 
 
 
-                          String browserVersion, @Optional("https://www.google.com/") String url)throws IOException {
+                          String browserVersion, @Optional("https://www.alibaba.com/") String url)throws IOException {
 
 
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
@@ -124,7 +124,8 @@ public class CommonAPI {
         //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
 
         driver.get(url);
-        driver.manage().window().maximize();
+       //Maxmize window
+        // driver.manage().window().maximize();
     }
     public WebDriver getLocalDriver(@Optional("mac") String OS, String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
@@ -620,7 +621,6 @@ public class CommonAPI {
 
     public List getAllElementOptions(WebElement element, String tagname) {
         List<String> links = new ArrayList<>();
-
         List<WebElement> list = element.findElements(By.tagName(tagname));
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getText());

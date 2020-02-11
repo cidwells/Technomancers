@@ -200,4 +200,196 @@ public class TestCategories extends Categories {
         categories.clickAllCategoriesSwitchTab();
         categories.clickOnServiceEquipmentInCatWebElement();
     }
+    @Test
+    public void scrollClickAgriculture(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnAgricultureWebElement();
+    }
+    @Test
+    public void scrollClickFoodBeverage(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnFoodNBeverage();
+    }
+    @Test
+    public void scrollClickApparel(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnApparelInAllWebElement();
+    }
+    @Test
+    public void scrollClickTextileNLeatherProduct(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnTextileNLeatherProductInCatWebElement();
+    }
+    @Test
+    public void scrollClickFashionNAccessories(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnFashionNAccessoriesInCatWebElement();
+    }
+    @Test
+    public void scrollClickTimePieceJeweleryEyeWare(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnTimePieceJeweleryEyeWareInCatWebElement();
+    }
+    @Test
+    public void scrollClickVehicleAccessories(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnVehicleAccessoriesInCatWebElement();
+    }
+    @Test
+    public void scrollClickLuggageBagsNCases(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnLuggageBagsNCasesInCatWebElement();
+    }
+    @Test
+    public void scrollClickShoesNAccessories(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnShoesNAccessoriesInCatWebElement();
+    }
+    @Test
+    public void scrollClickConsumerElectronics(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnConsumerElectronicsInCatWebElement();
+    }
+    @Test
+    public void scrollClickHomeAppliance(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnHomeApplianceInCatWebElement();
+    }
+    @Test
+    public void scrollClickSecurityNProtection(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnSecurityNProtectionInCatWebElement();
+    }
+    @Test
+    public void scrollClickElectricalEquipmentNSupplies(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnElectricalEquipmentNSuppliesInCatWebElement();
+    }
+    @Test
+    public void scrollClickSportsNEntertainment(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnSportsNEntertainmentInCatWebElement();
+    }
+    @Test
+    public void scrollClickGiftsNCraft(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnGiftsNCraftInCatWebElement();
+    }
+    @Test
+    public void scrollClickToysNHobbies(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.clickOnToysNHobbiesInCatWebElement();
+    }
+    @Test
+    public void scrollClickHealthNMedical(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnHealthNMedicalInCatWebElement();
+    }
+    @Test
+    public void scrollClickBeautyNPersonalCare(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnBeautyNPersonalCareInCatWebElement();
+    }
+    @Test
+    public void scrollClickConstructionNRealEstate(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnConstructionNRealEstateInCatWebElement();
+    }
+    @Test
+    public void scrollClickHomeNGarden(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnHomeNGardenInCatWebElement();
+    }
+    @Test
+    public void scrollClickLightsNLighting(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnLightsNLightingInCatWebElement();
+    }
+    @Test
+    public void scrollClickFurniture(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnFurnitureInCatWebElement();
+    }
+    @Test
+    public void scrollClickMachinery(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnMachineryInCatWebElement();
+    }
+    @Test
+    public void scrollClickFabricationServices(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnFabricationServicesInCatWebElement();
+    }
+    @Test
+    public void scrollClickToolsNHardware(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnToolsNHardwareInCatWebElement();
+    }
+    @Test
+    public void scrollClickMineralsNMetallurgy(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnMineralsNMetallurgyInCatWebElement();
+    }
+    @Test
+    public void scrollClickChemicals(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnChemicalsInCatWebElement();
+    }
+    @Test
+    public void scrollClickRubberNPlastic(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnRubberNPlasticInCatWebElement();
+    }
+    @Test
+    public void scrollClickEnergy(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnEnergyInCatWebElement();
+    }
+    @Test
+    public void scrollClickPackagingNPrinting(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnPackagingNPrintingInCatWebElement();
+    }
+    @Test
+    public void scrollClickOfficeNSupplies(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnOfficeNSuppliesInCatWebElement();
+    }
+    @Test
+    public void scrollClickServiceEquipment(){
+        Categories categories = PageFactory.initElements(driver, Categories.class);
+        categories.clickAllCategoriesSwitchTab();
+        categories.sClickOnServiceEquipmentInCatWebElement();
+    }
 }

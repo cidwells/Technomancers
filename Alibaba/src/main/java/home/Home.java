@@ -4,35 +4,37 @@ import base.CommonAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.testng.Assert;
+import search.Search;
 
 import java.security.Policy;
 import java.util.List;
 
 public class Home extends CommonAPI {
 
-    @FindBy(how = How.CSS, using = "a[title='Home & Kitchen']")
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div/div[2]/div/div/div/ul/li[9]/ul/li[6]/a[1]")
     private static WebElement kitchenWebElement;
-    @FindBy(how = How.CSS, using = "a[title='Tools & Hardware']")
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/ul/li[9]/a[2]")
     private static WebElement toolsHardwareWebElement;
     @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/ul/li[13]/a[3]")
     private static WebElement rubberPlasticsWebElement;
-    @FindBy(how = How.CSS, using = "a[title='Electrical Equipment & Supplies']")
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/ul/li[9]/a[1]")
     private static WebElement electricalEquipmentSuppliesWebElement;
-    @FindBy(how = How.CSS, using = "a[title='Vehicles & Accessories']")
+    @FindBy(how = How.XPATH, using = "//li[@class='menu-item util-ellipsis']//a[contains(text(),'Vehicles & Accessories')]")
     private static WebElement vehicleAccessoriesWebElement;
-    @FindBy(how = How.CSS, using = "a[title='Consumer Electronics']")
+    @FindBy(how = How.XPATH, using = "//li[@class='menu-item util-ellipsis']//a[contains(text(),'Consumer Electronics')]")
     private static WebElement consumerElectronicsWebElement;
-    @FindBy(how = How.CSS, using = "a[title='Apparel']")
+    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/ul/li[4]/a[1]")
     private static WebElement apparelWebElement;
     @FindBy(how = How.CSS, using = "/html/body/div[1]/header/div[4]/div/div[1]/div/div/div/ul/li[5]/div[1]/a[1]")
     private static WebElement electronicsWebElement;
-    @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[4]/div/div[3]/ul/li[1]/a")
+    @FindBy(how = How.XPATH, using = "//div[@class='sc-hd-links-box']//a[contains(text(),'Ready to Ship')]")
     private static WebElement readyToShipWebElement;
     @FindBy(how = How.XPATH, using = "/html/body/div[1]/header/div[4]/div/div[3]/ul/li[2]/a")
     private static WebElement tradeShowWebElement;
     @FindBy(how = How.XPATH, using = "/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[1]/label")
     private static WebElement oneRequestMultipleQuotesWebElement;
-    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div/div[1]/div[2]/div/div/div/ul/li[9]/a")
+    @FindBy(how = How.XPATH, using = "//a[@class='category-item vmore-link']")
     private static WebElement allCategoriesWebElement;
     @FindBy(how = How.XPATH, using = "/html/body/div[3]/div[1]/div[3]/div[2]/div[1]/form/div[2]/input")
     private static WebElement whatAreYouLookingForQuotesTextFieldWebElement;
@@ -92,10 +94,14 @@ public class Home extends CommonAPI {
     public void clickOnKitchenWebElement(){
         hoverOnWebElement(allCategoriesWebElement);
         getKitchenWebElement().click();
+        String actualTitle =  handleNewTab(driver).getTitle();
+        Assert.assertTrue(true,actualTitle);
     }
     public void clickOnToolsHardwareWebElement(){
         hoverOnWebElement(allCategoriesWebElement);
         getToolsHardwareWebElement().click();
+        String actualTitle = handleNewTab(driver).getTitle();
+        Assert.assertTrue(true,actualTitle);
     }
     public void clickOnRubberPlasticsWebElement(){
         hoverOnWebElement(allCategoriesWebElement);
@@ -109,15 +115,19 @@ public class Home extends CommonAPI {
         getElectricalEquipmentSuppliesWebElement().click();
     }
     public void clickOnVehicleAccessoriesWebElement(){
+        hoverOnWebElement(allCategoriesWebElement);
         getVehicleAccessoriesWebElement().click();
     }
     public void clickOnConsumerElectronicsWebElement(){
+        hoverOnWebElement(allCategoriesWebElement);
         getConsumerElectronicsWebElement().click();
     }
     public void clickOnApparelWebElement(){
+        hoverOnWebElement(allCategoriesWebElement);
         getApparelWebElement().click();
     }
     public void clickReadyToShipWebElement(){
+      hoverOnWebElement(readyToShipWebElement);
         getReadyToShipWebElement().click();
     }
     public void clickTradeShow(){
