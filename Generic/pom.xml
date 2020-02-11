@@ -68,12 +68,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                                        <suiteXmlFiles>
-                                            <suiteXmlFiles>target/test-classes/AmazonTestRunner.xml</suiteXmlFiles>
-                                        </suiteXmlFiles>
+                    <!--                    <suiteXmlFiles>-->
+                    <!--                        <suiteXmlFiles>target/test-classes/AmazonTestRunner.xml</suiteXmlFiles>-->
+                    <!--                    </suiteXmlFiles>-->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

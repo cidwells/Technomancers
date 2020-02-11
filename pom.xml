@@ -37,12 +37,12 @@
             <dependency>
                 <groupId>org.mongodb</groupId>
                 <artifactId>mongo-java-driver</artifactId>
-                <version>3.6.0-beta1</version>
+                <version>3.11.2</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.19</version>
+                <version>8.0.17</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
@@ -67,7 +67,7 @@
             <dependency>
                 <groupId>io.rest-assured</groupId>
                 <artifactId>rest-assured</artifactId>
-                <version>4.1.2</version>
+                <version>4.1.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -87,12 +87,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <suiteXmlFiles>
-                                                <suiteXmlFiles>target/test-classes/AlibabaTestRunner.xml</suiteXmlFiles>
-                    </suiteXmlFiles>
+                    <!--                    <suiteXmlFiles>-->
+                    <!--                        <suiteXmlFiles>target/test-classes/AmazonTestRunner.xml</suiteXmlFiles>-->
+                    <!--                    </suiteXmlFiles>-->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
