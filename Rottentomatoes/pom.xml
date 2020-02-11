@@ -32,9 +32,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-<!--                    <suiteXmlFiles>-->
+                    <suiteXmlFiles>
 <!--                        <suiteXmlFiles>target/test-classes/rottentomatoesRunner.xml</suiteXmlFiles>-->
-<!--                    </suiteXmlFiles>-->
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
