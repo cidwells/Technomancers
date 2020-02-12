@@ -14,11 +14,11 @@
     <test name = "HomePage">
         <classes>
 
-<!--            <class name="testSearch.TestSearch"/>-->
-<!--            <class name="testSearch.TestSeries"/>-->
-<!--            <class name="testSearch.TestLiveScore"/>-->
-<!--            <class name="testSearch.TestTeams"/>-->
-<!--            <class name="testSearch.TestFeature"/>-->
+            <class name="testSearch.TestSearch"/>
+            <class name="testSearch.TestSeries"/>
+            <class name="testSearch.TestLiveScore"/>
+            <class name="testSearch.TestTeams"/>
+            <class name="testSearch.TestFeature"/>
         </classes>
     </test>
 

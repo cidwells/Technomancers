@@ -14,7 +14,7 @@
     <test name = "Facebook Home">
         <classes>
 
-<!--            <class name="testLogin.TestLogin"/>-->
+            <class name="testLogin.TestLogin"/>
         </classes>
     </test>
 

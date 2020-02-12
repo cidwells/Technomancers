@@ -16,6 +16,8 @@
         <module>Rottentomatoes</module>
         <module>Facebook</module>
         <module>Cnn</module>
+        <module>RestAssuredAPI</module>
+
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -69,6 +71,16 @@
                 <artifactId>rest-assured</artifactId>
                 <version>4.1.2</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.scribejava</groupId>
+                <artifactId>scribejava-apis</artifactId>
+                <version>2.5.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.8</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -77,6 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
