@@ -14,7 +14,7 @@
     <test name = "RottentomatoeHome">
         <classes>
 
-            <class name="testSearch.TestSearch"/>
+<!--            <class name="testSearch.TestSearch"/>-->
         </classes>
     </test>
 
