@@ -98,18 +98,21 @@ public class CommonAPI {
 
     //Browser SetUp
     public static WebDriver driver = null;
-    public String browserstack_username = "";
-    public String browserstack_accesskey = "";
+    public String browserstack_username= "cid4";
+    public String browserstack_accesskey = "fV9iUgvQ4nYRhPZoJsVs";
     public String saucelabs_username = "";
     public String saucelabs_accesskey = "";
 
     @Parameters({"useCloudEnv", "cloudEnvName", "os", "os_version", "browserName", "browserVersion", "url"})
     @BeforeMethod
-    public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false") String cloudEnvName,
-                      @Optional("OS X") String os, @Optional("10") String os_version, @Optional("chrome-options") String browserName, @Optional("34")
+
+    public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false")String cloudEnvName,
+                      @Optional("Windows") String os, @Optional("10") String os_version, @Optional("firefox") String browserName, @Optional("72")
 
 
-                              String browserVersion, @Optional("https://www.google.com/") String url) throws IOException {
+
+                          String browserVersion, @Optional("https://www.alibaba.com/") String url)throws IOException {
+
 
 
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
@@ -123,13 +126,13 @@ public class CommonAPI {
             getLocalDriver(os, browserName);
         }
 
-
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
+ 
         //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
 
         driver.get(url);
-        driver.manage().window().maximize();
+       //Maxmize window
+        // driver.manage().window().maximize();
     }
 
     public WebDriver getLocalDriver(@Optional("mac") String OS, String browserName) {
@@ -186,8 +189,9 @@ public class CommonAPI {
     }
 
     //@AfterMethod
-    public void cleanUp() {
-        driver.close();
+
+    public void cleanUp(){
+    driver.close();
     }
 
     //helper methods
@@ -303,6 +307,11 @@ public class CommonAPI {
 
     public void navigateBack() {
         driver.navigate().back();
+    }
+    //scroll to element
+    public void scrollByVisibleElement(WebElement webElement){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
     //scroll to element
@@ -485,7 +494,8 @@ public class CommonAPI {
         }
     }
 
-    public void hoverOnWebElement(WebElement webElement) {
+
+    public void hoverOnWebElement(WebElement webElement){
         Actions hover = new Actions(driver);
         hover.moveToElement(webElement).build().perform();
     }
@@ -552,8 +562,8 @@ public class CommonAPI {
     }
 
     public void waitUntilClickAble(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    WebDriverWait wait = new WebDriverWait(driver, 20);
+    WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public void waitUntilVisible(WebElement webElement) {
@@ -613,22 +623,20 @@ public class CommonAPI {
         }
     }
 
-    // Scroll To Element
-    public void scrollByElement(WebElement webElement) {
+       // Scroll To Element
+    public void scrollByElement(WebElement webElement){
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
 
     }
 
-
-    public void mouseHover(WebElement element) {
+    public void mouseHover(WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
     }
 
     public List getAllElementOptions(WebElement element, String tagname) {
         List<String> links = new ArrayList<>();
-
         List<WebElement> list = element.findElements(By.tagName(tagname));
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getText());
@@ -636,8 +644,6 @@ public class CommonAPI {
         }
         return links;
     }
-
-
     // MouseHover Method
     public void selectMouseHover(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(driver);
@@ -645,8 +651,9 @@ public class CommonAPI {
     }
 
     //Drop down
-    public void dropDown(WebElement webElement, int value) {
+    public void dropDown(WebElement webElement, int value){
         Select dropDownBtn = new Select(webElement);
         dropDownBtn.selectByIndex(value);
     }
 }
+

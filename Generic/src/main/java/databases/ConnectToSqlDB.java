@@ -21,7 +21,8 @@ public class ConnectToSqlDB {
 
     public static Properties loadProperties() throws IOException{
         Properties prop = new Properties();
-        InputStream ism = new FileInputStream("/Users/malika/Documents/MalikaTechnomancersCostco/Technomancers/Generic/src/secret.properties");
+
+        InputStream ism = new FileInputStream("C:\\Users\\Sydul\\Desktop\\bigfish\\Technomancers\\Generic\\secret.properties");
         prop.load(ism);
         ism.close();
         return prop;
@@ -80,7 +81,7 @@ public class ConnectToSqlDB {
         return dataList;
     }
 
-    public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, String columnName)
+    public static void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, String columnName)
     {
         try {
             connectToSqlDatabase();
@@ -103,7 +104,7 @@ public class ConnectToSqlDB {
         }
     }
 
-    public void insertDataFromStringToSqlTable(String ArrayData, String tableName, String columnName)
+    public static void insertDataFromStringToSqlTable(String ArrayData, String tableName, String columnName)
     {
         try {
             connectToSqlDatabase();
@@ -135,7 +136,7 @@ public class ConnectToSqlDB {
         return data;
     }
 
-    public void insertDataFromArrayListToSqlTable(List<Student> list, String tableName, String columnName)
+    public static void insertDataFromArrayListToSqlTable(List<Student> list, String tableName, String columnName)
     {
         try {
             connectToSqlDatabase();
@@ -157,7 +158,29 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         }
     }
-    public void insertStringDataFromArrayListToSqlTable(List<String> list, String tableName, String columnName)
+    public static void insertStringDataFromArrayListToSqlTable(List<String> list, String tableName, String columnName)
+    {
+        try {
+            connectToSqlDatabase();
+            ps = connect.prepareStatement("DROP TABLE IF EXISTS `"+tableName+"`;");
+            ps.executeUpdate();
+            ps = connect.prepareStatement("CREATE TABLE `"+tableName+"` (`ID` int(11) NOT NULL AUTO_INCREMENT,`"+columnName+"` varchar(30) DEFAULT NULL, PRIMARY KEY (`ID`) );");
+            ps.executeUpdate();
+            for(String st:list){
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
+                ps.setObject(1,st);
+                ps.executeUpdate();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void insertStringDataFromArrayListToSqlTableUsingArray(ArrayList<String> list, String tableName, String columnName)
     {
         try {
             connectToSqlDatabase();
@@ -204,7 +227,7 @@ public class ConnectToSqlDB {
         User user = null;
         try{
             Connection conn = connectToSqlDatabase();
-            String query = "SELECT * FROM Students";
+            String query = "SELECT * FROM item";
             // create the java statement
             Statement st = conn.createStatement();
             // execute the query, and get a java resultset
