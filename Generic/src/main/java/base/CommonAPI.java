@@ -314,12 +314,6 @@ public class CommonAPI {
         javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
-    //scroll to element
-    public void scrollByVisibleElement(WebElement webElement) {
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
-    }
-
     public static void captureScreenshot(WebDriver driver, String screenshotName) {
         DateFormat df = new SimpleDateFormat("(MM.dd.yyyy-HH:mma)");
         Date date = new Date();
