@@ -1,5 +1,4 @@
 package testSignIn;
-
 import base.CommonAPI;
 import home.SignIn;
 import org.openqa.selenium.support.PageFactory;
@@ -38,9 +37,8 @@ public class TestSignIn extends CommonAPI {
 
     }
     @Test
-    public void testRetestPassword() throws InterruptedException {
+    public void testRetestPassword()  {
         accessSignIn();
         singnin.restPaasWord();
-        Thread.sleep(10000);
     }
 }

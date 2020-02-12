@@ -17,6 +17,13 @@
             <class name="testSignUp.TestSignUp"/>
             <class name="testSignIn.TestSignIn"/>
             <class name="testShopAllDepartements.TestShopAllDepartments"/>
+            <class name="testTravel.TestTravel"/>
+            <class name="testDatasearch.TestDataSearch"/>
+            <class name="testkeyword.TestKeyword"/>
+            <class name="testPhoto.TestPhoto"/>
+            <class name="testMyAccount.TestMyAccount"/>
+            <class name="testService.TestService"/>
+
 
 
         </classes>

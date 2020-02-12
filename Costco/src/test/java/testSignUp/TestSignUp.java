@@ -25,13 +25,11 @@ public class TestSignUp extends CommonAPI {
     public void testSignUpWithDifferentPassword() {
         accessSignUp();
         signup.sinUpWithDifferentPassword();
-
     }
     @Test
-    public void testSignUpWithSameEmail() throws InterruptedException {
+    public void testSignUpWithSameEmail() {
         accessSignUp();
         signup.sinUp();
-        Thread.sleep(10000);
         String actualTittle="https://www.costco.com/UserRegistrationAdd";
         String expectedTittle=driver.getCurrentUrl();
         Assert.assertEquals(actualTittle,expectedTittle);

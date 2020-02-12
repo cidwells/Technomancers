@@ -11,6 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,11 +39,13 @@ public class CommonAPI {
 
     //ExtentReport
     public static ExtentReports extent;
+
     @BeforeSuite
     public void extentSetup(ITestContext context) {
         ExtentManager.setOutputDirectory(context);
         extent = ExtentManager.getInstance();
     }
+
     @BeforeMethod
     public void startExtent(Method method) {
         String className = method.getDeclaringClass().getSimpleName();
@@ -50,12 +53,14 @@ public class CommonAPI {
         ExtentTestManager.startTest(method.getName());
         ExtentTestManager.getTest().assignCategory(className);
     }
+
     protected String getStackTrace(Throwable t) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         t.printStackTrace(pw);
         return sw.toString();
     }
+
     @AfterMethod
     public void afterEachTestMethod(ITestResult result) {
         ExtentTestManager.getTest().getTest().setStartedTime(getTime(result.getStartMillis()));
@@ -79,70 +84,80 @@ public class CommonAPI {
         }
         driver.quit();
     }
+
     @AfterSuite
     public void generateReport() {
         extent.close();
     }
+
     private Date getTime(long millis) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
+
     //Browser SetUp
     public static WebDriver driver = null;
-    public String browserstack_username= "";
+    public String browserstack_username = "";
     public String browserstack_accesskey = "";
     public String saucelabs_username = "";
     public String saucelabs_accesskey = "";
 
-    @Parameters({"useCloudEnv","cloudEnvName","os","os_version","browserName","browserVersion","url"})
+    @Parameters({"useCloudEnv", "cloudEnvName", "os", "os_version", "browserName", "browserVersion", "url"})
     @BeforeMethod
-    public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false")String cloudEnvName,
+    public void setUp(@Optional("false") boolean useCloudEnv, @Optional("false") String cloudEnvName,
                       @Optional("OS X") String os, @Optional("10") String os_version, @Optional("chrome-options") String browserName, @Optional("34")
-                              String browserVersion, @Optional("https://www.googgle.com/") String url)throws IOException {
+
+
+                              String browserVersion, @Optional("https://www.google.com/") String url) throws IOException {
+
+
         //System.setProperty("webdriver.chrome.driver", "/Users/peoplentech/eclipse-workspace-March2018/SeleniumProject1/driver/chromedriver");
-        if(useCloudEnv==true){
-            if(cloudEnvName.equalsIgnoreCase("browserstack")) {
-                getCloudDriver(cloudEnvName,browserstack_username,browserstack_accesskey,os,os_version, browserName, browserVersion);
-            }else if (cloudEnvName.equalsIgnoreCase("saucelabs")){
-                getCloudDriver(cloudEnvName,saucelabs_username, saucelabs_accesskey,os,os_version, browserName, browserVersion);
+        if (useCloudEnv == true) {
+            if (cloudEnvName.equalsIgnoreCase("browserstack")) {
+                getCloudDriver(cloudEnvName,"malikaamiali1", "UJ3mpvVsSmJWx1vxNup8", os, os_version, browserName, browserVersion);
+            } else if (cloudEnvName.equalsIgnoreCase("saucelabs")) {
+                getCloudDriver(cloudEnvName, saucelabs_username, saucelabs_accesskey, os, os_version, browserName, browserVersion);
             }
-        }else{
+        } else {
             getLocalDriver(os, browserName);
         }
+
+
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+
+        //driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+
         driver.get(url);
         driver.manage().window().maximize();
     }
-    public WebDriver getLocalDriver(@Optional("mac") String OS, String browserName){
-        if(browserName.equalsIgnoreCase("chrome")){
-            if(OS.equalsIgnoreCase("OS X")){
+
+    public WebDriver getLocalDriver(@Optional("mac") String OS, String browserName) {
+        if (browserName.equalsIgnoreCase("chrome")) {
+            if (OS.equalsIgnoreCase("OS X")) {
                 System.setProperty("webdriver.chrome.driver", "../Generic/browser-driver/chromedriver");
-            }else if(OS.equalsIgnoreCase("Windows")){
+            } else if (OS.equalsIgnoreCase("Windows")) {
                 System.setProperty("webdriver.chrome.driver", "../Generic/browser-driver/chromedriver.exe");
             }
             driver = new ChromeDriver();
-        } else if(browserName.equalsIgnoreCase("chrome-options")){
+        } else if (browserName.equalsIgnoreCase("chrome-options")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-notifications");
-            if(OS.equalsIgnoreCase("OS X")){
+            if (OS.equalsIgnoreCase("OS X")) {
                 System.setProperty("webdriver.chrome.driver", "../Generic/browser-driver/chromedriver");
-            }else if(OS.equalsIgnoreCase("Windows")){
+            } else if (OS.equalsIgnoreCase("Windows")) {
                 System.setProperty("webdriver.chrome.driver", "../Generic/browser-driver/chromedriver.exe");
             }
             driver = new ChromeDriver(options);
-        }
-
-        else if(browserName.equalsIgnoreCase("firefox")){
-            if(OS.equalsIgnoreCase("OS X")){
+        } else if (browserName.equalsIgnoreCase("firefox")) {
+            if (OS.equalsIgnoreCase("OS X")) {
                 System.setProperty("webdriver.gecko.driver", "../Generic/browser-driver/geckodriver");
-            }else if(OS.equalsIgnoreCase("Windows")) {
+            } else if (OS.equalsIgnoreCase("Windows")) {
                 System.setProperty("webdriver.gecko.driver", "../Generic/browser-driver/geckodriver.exe");
             }
             driver = new FirefoxDriver();
 
-        } else if(browserName.equalsIgnoreCase("ie")) {
+        } else if (browserName.equalsIgnoreCase("ie")) {
             System.setProperty("webdriver.ie.driver", "../Generic/browser-driver/IEDriverServer.exe");
             driver = new InternetExplorerDriver();
         }
@@ -151,18 +166,18 @@ public class CommonAPI {
     }
 
 
-    public WebDriver getCloudDriver(String envName,String envUsername, String envAccessKey,String os, String os_version,String browserName,
-                                    String browserVersion)throws IOException {
+    public WebDriver getCloudDriver(String envName, String envUsername, String envAccessKey, String os, String os_version, String browserName,
+                                    String browserVersion) throws IOException {
         DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("browser",browserName);
-        cap.setCapability("browser_version",browserVersion);
+        cap.setCapability("browser", browserName);
+        cap.setCapability("browser_version", browserVersion);
         cap.setCapability("os", os);
         cap.setCapability("os_version", os_version);
-        if(envName.equalsIgnoreCase("Saucelabs")){
+        if (envName.equalsIgnoreCase("Saucelabs")) {
             //resolution for Saucelabs
-            driver = new RemoteWebDriver(new URL("http://"+envUsername+":"+envAccessKey+
+            driver = new RemoteWebDriver(new URL("http://" + envUsername + ":" + envAccessKey +
                     "@ondemand.saucelabs.com:80/wd/hub"), cap);
-        }else if(envName.equalsIgnoreCase("Browserstack")) {
+        } else if (envName.equalsIgnoreCase("Browserstack")) {
             cap.setCapability("resolution", "1024x768");
             driver = new RemoteWebDriver(new URL("http://" + envUsername + ":" + envAccessKey +
                     "@hub-cloud.browserstack.com/wd/hub"), cap);
@@ -170,16 +185,16 @@ public class CommonAPI {
         return driver;
     }
 
-    @AfterMethod
-    public void cleanUp(){
-//    driver.close();
+    //@AfterMethod
+    public void cleanUp() {
+        driver.close();
     }
 
     //helper methods
-    public void clickOnElement(String locator){
-        try{
+    public void clickOnElement(String locator) {
+        try {
             driver.findElement(By.name(locator)).click();
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             try {
                 driver.findElement(By.id(locator)).click();
             } catch (Exception ex2) {
@@ -200,10 +215,10 @@ public class CommonAPI {
         }
     }
 
-    public void typeOnElement(String locator, String value){
-        try{
+    public void typeOnElement(String locator, String value) {
+        try {
             driver.findElement(By.name(locator)).sendKeys(value);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             try {
                 driver.findElement(By.id(locator)).sendKeys(value);
             } catch (Exception ex2) {
@@ -223,6 +238,7 @@ public class CommonAPI {
             }
         }
     }
+
     public static void typeOnElementNEnter(String locator, String value) {
         try {
             driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
@@ -242,7 +258,7 @@ public class CommonAPI {
         }
     }
 
-    public static void typeOnElementNEnter(String locator, String value,WebDriver driver1) {
+    public static void typeOnElementNEnter(String locator, String value, WebDriver driver1) {
         try {
             driver1.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
         } catch (Exception ex1) {
@@ -260,10 +276,11 @@ public class CommonAPI {
             }
         }
     }
+
     public void clearField(String locator) {
-        try{
+        try {
             driver.findElement(By.name(locator)).clear();
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             try {
                 driver.findElement(By.id(locator)).clear();
             } catch (Exception ex2) {
@@ -275,7 +292,7 @@ public class CommonAPI {
                     } catch (Exception ex4) {
                         try {
                             driver.findElement(By.linkText(locator)).clear();
-                            } catch (Exception ex5) {
+                        } catch (Exception ex5) {
                             driver.findElement(By.className(locator)).clear();
                         }
                     }
@@ -286,6 +303,12 @@ public class CommonAPI {
 
     public void navigateBack() {
         driver.navigate().back();
+    }
+
+    //scroll to element
+    public void scrollByVisibleElement(WebElement webElement) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
     public static void captureScreenshot(WebDriver driver, String screenshotName) {
@@ -321,6 +344,7 @@ public class CommonAPI {
             }
         }
     }
+
     public void typeOnInputField(String locator, String value) {
         try {
             driver.findElement(By.cssSelector(locator)).sendKeys(value);
@@ -395,6 +419,7 @@ public class CommonAPI {
         list = driver1.findElements(By.cssSelector(locator));
         return list;
     }
+
     public List<WebElement> getListOfWebElementsByXpath(String locator) {
         List<WebElement> list = new ArrayList<WebElement>();
         list = driver.findElements(By.xpath(locator));
@@ -458,7 +483,11 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
+    }
 
+    public void hoverOnWebElement(WebElement webElement) {
+        Actions hover = new Actions(driver);
+        hover.moveToElement(webElement).build().perform();
     }
 
     public void mouseHoverByXpath(String locator) {
@@ -473,7 +502,6 @@ public class CommonAPI {
             action.moveToElement(element).perform();
 
         }
-
     }
 
     //handling Alert
@@ -509,18 +537,33 @@ public class CommonAPI {
 
     //Synchronization
     public void waitUntilClickAble(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitUntilVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitUntilSelectable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
+    public void waitUntilClickAble(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void waitUntilVisible(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public void waitUntilSelectable(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        boolean element = wait.until(ExpectedConditions.elementToBeSelected(webElement));
     }
 
     public void upLoadFile(String locator, String path) {
@@ -570,10 +613,19 @@ public class CommonAPI {
         }
     }
 
-    public void mouseHover(WebElement element){
+    // Scroll To Element
+    public void scrollByElement(WebElement webElement) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView();", webElement);
+
+    }
+
+
+    public void mouseHover(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
     }
+
     public List getAllElementOptions(WebElement element, String tagname) {
         List<String> links = new ArrayList<>();
 
@@ -585,4 +637,16 @@ public class CommonAPI {
         return links;
     }
 
+
+    // MouseHover Method
+    public void selectMouseHover(WebElement webElement) throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(webElement).perform();
+    }
+
+    //Drop down
+    public void dropDown(WebElement webElement, int value) {
+        Select dropDownBtn = new Select(webElement);
+        dropDownBtn.selectByIndex(value);
+    }
 }

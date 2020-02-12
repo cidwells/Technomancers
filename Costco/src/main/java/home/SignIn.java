@@ -21,12 +21,11 @@ public class SignIn extends CommonAPI {
     WebElement signInBtn;
 
     @FindBy(xpath = "//a[text()='Forgot Password?']")
-    WebElement  forgetPasswordLink;
+    WebElement forgetPasswordLink;
     @FindBy(xpath = "//input[@value='Send Password Reset Link']")
-    WebElement       sendPasswordResetLink;
+    WebElement sendPasswordResetLink;
 
-
-    public void singnin(String email, String password){
+    public void singnin(String email, String password) {
         signInRegisterLink.click();
         signInRegisterLink.click();
         emailTextBox.sendKeys(email);
@@ -36,40 +35,42 @@ public class SignIn extends CommonAPI {
 
     //    Methods
     public void signIn() {
-        singnin("ma","");
+//        singnin();
         String actualTitle = "Add Membership Number";
         String expectedTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     public void signInWithInvalidEmail() {
-        singnin("","");
+        singnin("malikaamial", "masten_2013");
         String actualURL = "https://www.costco.com/LogonForm";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualURL, expectedURL);
     }
 
     public void signInWithInvalidPassword() {
-       singnin("","");
+        singnin("malikaamiali82@gmail.com", "masten");
         String actualTitle = "Sign In";
         String expectedTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle,expectedTitle);
+        Assert.assertEquals(actualTitle, expectedTitle);
 
     }
+
     public void signInWithInvalidPasswordInvalidEmail() {
-       singnin("","");
+        singnin("malika", "masten");
         String actualTitle = "Sign In";
         String expectedTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle,expectedTitle);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
-    public void restPaasWord(){
+
+    public void restPaasWord() {
         signInRegisterLink.click();
         forgetPasswordLink.click();
-        emailTextBox.sendKeys("m");
+        emailTextBox.sendKeys("malikaamiali82@gmail.com");
         sendPasswordResetLink.click();
         String actualTitle = "Password Reset Success";
         String expectedTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle,expectedTitle);
+        Assert.assertEquals(actualTitle, expectedTitle);
 
     }
 }
