@@ -51,6 +51,14 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,9 +76,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <!--                    <suiteXmlFiles>-->
-                    <!--                        <suiteXmlFiles>target/test-classes/AmazonTestRunner.xml</suiteXmlFiles>-->
-                    <!--                    </suiteXmlFiles>-->
+                    <suiteXmlFiles>
+<!--                        <suiteXmlFiles>target/test-classes/AlibabaRunner.xml</suiteXmlFiles>-->
+<!--                        <suiteXmlFiles>target/test-classes/costcoRunner.xml</suiteXmlFiles>-->
+<!--                        <suiteXmlFiles>target/test-classes/rottentomatoesRunner.xml</suiteXmlFiles>-->
+<!--                        <suiteXmlFile>target/test-classes/espnCricinfoRunner.xml</suiteXmlFile>-->
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

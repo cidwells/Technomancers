@@ -16,6 +16,10 @@
         <module>Rottentomatoes</module>
         <module>Facebook</module>
         <module>Cnn</module>
+        <module>Twitter</module>
+        <module>RestAssuredAPI</module>
+
+
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -67,7 +71,17 @@
             <dependency>
                 <groupId>io.rest-assured</groupId>
                 <artifactId>rest-assured</artifactId>
-                <version>4.1.1</version>
+                <version>4.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.scribejava</groupId>
+                <artifactId>scribejava-apis</artifactId>
+                <version>2.5.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.8</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -77,6 +91,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -87,9 +102,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <!--                    <suiteXmlFiles>-->
-                    <!--                        <suiteXmlFiles>target/test-classes/AmazonTestRunner.xml</suiteXmlFiles>-->
-                    <!--                    </suiteXmlFiles>-->
+                    <suiteXmlFiles>
+<!--                        <suiteXmlFiles>target/test-classes/AlibabaRunner.xml</suiteXmlFiles>-->
+<!--                        <suiteXmlFiles>target/test-classes/costcoRunner.xml</suiteXmlFiles>-->
+<!--                        <suiteXmlFiles>target/test-classes/rottentomatoesRunner.xml</suiteXmlFiles>-->
+<!--                        <suiteXmlFile>target/test-classes/espnCricinfoRunner.xml</suiteXmlFile>-->
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

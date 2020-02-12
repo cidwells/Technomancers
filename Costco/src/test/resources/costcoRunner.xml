@@ -5,10 +5,10 @@
 
     <parameter name="useCloudEnv" value="false"/>
     <parameter name="cloudEnvName" value="browserstack"/>
-    <parameter name="os" value="OS X"/>
-    <parameter name="os_version" value="Sierra"/>
-    <parameter name="browserName" value="chrome"/>
-    <parameter name="browserVersion" value="79.0"/>
+    <parameter name="os" value="Windows"/>
+    <parameter name="os_version" value="10"/>
+    <parameter name="browserName" value="firefox"/>
+    <parameter name="browserVersion" value="72"/>
     <parameter name="url" value="https://www.costco.com"/>
 
     <test name = "Costco Home">
@@ -17,6 +17,13 @@
             <class name="testSignUp.TestSignUp"/>
             <class name="testSignIn.TestSignIn"/>
             <class name="testShopAllDepartements.TestShopAllDepartments"/>
+            <class name="testTravel.TestTravel"/>
+            <class name="testDatasearch.TestDataSearch"/>
+            <class name="testkeyword.TestKeyword"/>
+            <class name="testPhoto.TestPhoto"/>
+            <class name="testMyAccount.TestMyAccount"/>
+            <class name="testService.TestService"/>
+
 
 
         </classes>

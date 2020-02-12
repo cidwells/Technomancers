@@ -2,101 +2,154 @@ package testSearch;
 
 import base.CommonAPI;
 import home.Search;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestSearch extends CommonAPI {
 
-    Search costcoHome;
+    Search searchPage;
 
     public void accessCostcoHomePage() {
 
-        this.costcoHome = PageFactory.initElements(driver, Search.class);
+        this.searchPage= PageFactory.initElements(driver, Search.class);
     }
 
     @Test
     public void testPrintUsList() throws InterruptedException {
         accessCostcoHomePage();
-        costcoHome.printCountryList();
+        searchPage.printCountryList();
         Thread.sleep(2000);
     }
     @Test
     public void testCostcoLogo() {
         accessCostcoHomePage();
-        costcoHome.costcoLogo();
-        String actualURL="https://www.costco.com/";
-        String extectedURL=driver.getCurrentUrl();
-        Assert.assertEquals(actualURL,extectedURL);
+        searchPage.costcoLogo();
     }
 
     @Test
-    public void testMakeSearch() throws InterruptedException {
+    public void testMakeSearch(){
         accessCostcoHomePage();
-        costcoHome.makeSearch("computers");
-        Thread.sleep(8000);
-        String actualURL = "https://www.costco.com/computers.html";
-        String expectedURL = driver.getCurrentUrl();
-        Assert.assertEquals(actualURL, expectedURL);
+        searchPage.makeSearch();
     }
 
     @Test
-    public void testLocationsLink() throws InterruptedException {
+    public void testLocationsLink()  {
         accessCostcoHomePage();
-        costcoHome.clickLocations();
-        String actualURL = "https://www.costco.com/warehouse-locations?langId=-1&storeId=10301&catalogId=10701";
-        String expectedURL = driver.getCurrentUrl();
-        Thread.sleep(8000);
-        Assert.assertEquals(actualURL, expectedURL);
+        searchPage.clickLocations();
     }
 
     @Test
-    public void testFindLocation() throws InterruptedException {
+    public void testFindLocation() {
         accessCostcoHomePage();
-        Thread.sleep(2000);
-        costcoHome.findLocation();
-        Thread.sleep(5000);
-        Thread.sleep(10000);
+        searchPage.findLocation();
     }
 
     @Test
-    public void testWareHouseLocation() throws InterruptedException {
+    public void testWareHouseLocation() {
         accessCostcoHomePage();
-        costcoHome.wareHouseLocations();
-        Thread.sleep(6000);
+        searchPage.wareHouseLocations();
     }
 
     @Test
-    public void testMoueHoverOpticalLink() throws InterruptedException {
+    public void testMoueHoverOpticalLink()  {
         accessCostcoHomePage();
-        costcoHome.mouseHoverOpticallink();
-        Thread.sleep(3000);
+        searchPage.mouseHoverOpticallink();
     }
 
     @Test
-    public void testTravelLink() throws InterruptedException {
+    public void testTravelLink() {
         accessCostcoHomePage();
-        costcoHome.mouseHovertravelLink();
-        Thread.sleep(5000);
+        searchPage.mouseHovertravelLink();
     }
+
     @Test
-    public void testSelectAllDrpDown() throws InterruptedException {
+    public void testSelectAllDrpDown(){
         accessCostcoHomePage();
-        costcoHome.selectAllDropDown("cheese");
-        String actualURL="https://www.costco.com/grocery-household.html?dept=Grocery&keyword=cheese";
-        String expecteURL=costcoHome.getCurrentPageUrl();
-        Thread.sleep(20000);
+        searchPage.selectAllDropDown();
     }
+
+    @Test
     public void testOpticalMousehover(){
         accessCostcoHomePage();
-        costcoHome.opticalMouseHover();
+        searchPage.opticalMouseHover();
     }
+
     @Test
     public void testGetOpticalOption(){
         accessCostcoHomePage();
-        costcoHome.opticalMouseHover();
-        costcoHome.getOpticalOptions();
-
-
+        searchPage.opticalMouseHover();
+        searchPage.getOpticalOptions();
+    }
+    @Test
+    public void testWarHouse(){
+        accessCostcoHomePage();
+        searchPage.warHouseSaving();
+    }
+    @Test
+    public void testGetEmailOffers(){
+        accessCostcoHomePage();
+        searchPage.getEmailOffers();
+    }
+    @Test
+    public void testMemeberShip(){
+        accessCostcoHomePage();
+        searchPage.memeberShip();
+    }
+    @Test
+    public void testBarItem(){
+        accessCostcoHomePage();
+        searchPage.barItems();
+    }
+    @Test
+    public void testCustomerService(){
+        accessCostcoHomePage();
+        searchPage.customerService();
+    }
+    @Test
+    public void testChangeDEleiveryZipCode(){
+        accessCostcoHomePage();
+        searchPage.changeDEliveryZipCode();
+    }
+    @Test
+    public void testFillNewPrescription(){
+        accessCostcoHomePage();
+        searchPage.fillNewPrescription();
+    }
+    @Test
+    public void testPrescritionStatus(){
+        accessCostcoHomePage();
+        searchPage.prescriptionStatus();
+    }
+    @Test
+    public void testTransferWarHouse(){
+        accessCostcoHomePage();
+        searchPage.transerWarhouse();
+    }
+    @Test
+    public void testSearchMedication(){
+        accessCostcoHomePage();
+        searchPage.searchMedication();
+    }
+    @Test
+    public void testSearchboxSize(){
+     accessCostcoHomePage();
+        searchPage.searchtextBoxSize();
+    }
+    @Test
+    public void testorganic(){
+        accessCostcoHomePage();
+        searchPage.organic();
+    }
+    @Test
+    public void testCandy(){
+        accessCostcoHomePage();
+         searchPage.snacks();
+    }
+    @Test
+    public void testRightClick(){
+        accessCostcoHomePage();
+        searchPage.costcoLogoRightClick();
     }
 }
