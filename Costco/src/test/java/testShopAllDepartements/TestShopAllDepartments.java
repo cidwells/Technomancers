@@ -25,22 +25,51 @@ public class TestShopAllDepartments extends CommonAPI {
         shopAllDepartment.getAllDepartmentOption();
     }
     @Test
-    public void testPharmacyMouseHover() throws InterruptedException {
+    public void testPharmacyMouseHover() {
         accessShoAllDepartments();
         shopAllDepartment.pharmacyMouseHover();
-        Thread.sleep(5000);
+
     }
     @Test
-    public void testPharmacyOptions() throws InterruptedException {
+    public void testPharmacyOptions()  {
         accessShoAllDepartments();
         shopAllDepartment.pharmacyMouseHover();
         shopAllDepartment.getPharmacyOptions();
-        Thread.sleep(5000);
+
     }
     @Test
     public void testServicesMouseHover(){
         accessShoAllDepartments();
         shopAllDepartment.serviceMouseHover();
     }
-
+    @Test
+    public void testRenewMemberShip(){
+        accessShoAllDepartments();
+        shopAllDepartment.renewMemberShip();
+    }
+    @Test
+    public void testShoppingCart(){
+        accessShoAllDepartments();
+        shopAllDepartment.shoppingCart();
+    }
+    @Test
+    public void testShoppingCartIcon(){
+        accessShoAllDepartments();
+        shopAllDepartment.shoppingCartIcon();
+    }
+    @Test
+    public void testApplianceLink(){
+        accessShoAllDepartments();
+        shopAllDepartment.getIntoAppliance();
+    }
+    @Test
+    public void testApplianceOptions(){
+        accessShoAllDepartments();
+        shopAllDepartment.getApplianceOptions();
+    }
+     @Test
+    public void testskinCare(){
+        accessShoAllDepartments();
+        shopAllDepartment.beautyLink();
+     }
 }

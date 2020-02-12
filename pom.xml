@@ -16,7 +16,9 @@
         <module>Rottentomatoes</module>
         <module>Facebook</module>
         <module>Cnn</module>
+        <module>Twitter</module>
         <module>RestAssuredAPI</module>
+
 
     </modules>
     <dependencyManagement>

@@ -1,5 +1,4 @@
 package home;
-
 import base.CommonAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,35 +38,35 @@ public class SignUp extends CommonAPI {
 
     //Methods
     public void sinUpWithDifferentPassword() {
-        signup("f", "m", "m");
+        signup("ferhatbelmilom", "momy1974", "momy1975");
         String actualTittle = "https://www.costco.com/RegisterView?URL=&isPharmacy=false";
         String expectedTittle = driver.getCurrentUrl();
         Assert.assertEquals(actualTittle, expectedTittle);
     }
 
     public void sinUpWithLettersPassowrd() {
-        signup("m","mamamama","mamamama");
+        signup("ferhatbelmilail.com","mamamama","mamamama");
         String actualULR = "https://www.costco.com/UserRegistrationAdd";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualULR, expectedURL);
     }
 
     public void sinUpWithDigitPassword() {
-    signup("","1234556678","1234556678");
+    signup("ferhatbelmiloud74@gmail.com","1234556678","1234556678");
         String actualULR = "https://www.costco.com/RegisterView?URL=&isPharmacy=false";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualULR, expectedURL);
     }
 
     public void sinUpWithSpecialCharacters() {
-        signup("m","12345566<","12345566<");
+        signup("ferhatbelmiloud74@gmail.com","12345566<89","12345566<89");
         String actualULR = "https://www.costco.com/RegisterView?URL=&isPharmacy=false";
         String expectedURL = driver.getCurrentUrl();
         Assert.assertEquals(actualULR, expectedURL);
     }
 
     public void sinUp() {
-        signup("f", "m", "m");
+        signup("ferhatbelmiloud74@gmail.com", "momy1974", "momy1974");
         String actualTittle = "Register Account";
         String expectedTittle = driver.getTitle();
         Assert.assertEquals(actualTittle, expectedTittle);
